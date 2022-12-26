@@ -1,21 +1,29 @@
-import {Button} from "../Button/Button";
-
-export const Restaurant = ({ name, menu }) => {
+import { Menu } from "../Menu/Menu";
+import { Dish } from "../Dish/Dish";
+import { Reviews } from "../Reviews/Reviews";
+import { Review } from "../Review/Review";
+export const Restaurant = ({ name, menu, reviews }) => {
     return (
         <div>
             <h1>{name}</h1>
-            <div>
-                <h2>Menu</h2>
-                <ul>
-                    {
-                        menu.map(({name}) => <li>
-                            {name}
-                            <Button>-</Button>
-                            <Button>+</Button>
-                        </li>)
-                    }
-                </ul>
-            </div>
+            <Menu>
+                { 
+                    <ul>
+                        {menu.map(({ name, price, ingredients}) => (
+                            <li>
+                                <Dish name={name} price={price} ingredients={ingredients}/>
+                            </li>)
+                        )}
+                    </ul>
+                }
+            </Menu>
+            <Reviews>
+                {
+                    reviews.map(({ user, text, rating }) => (
+                        <Review user={user} text={text} rating={rating} />
+                    ))
+                }
+            </Reviews>
         </div>
     )
 }

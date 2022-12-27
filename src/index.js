@@ -4,15 +4,15 @@ import ReactDOM from 'react-dom/client';
 import { restaurants } from './constants/fixtures'
 
 import './index.css';
-import {Restaurant} from "./components/Restaurant/Restaurant";
+import {Restaurant} from "./components/Restaurant";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
 root.render(
     <div>
-        {restaurants.map(({name, menu}) =>
-            <Restaurant name={name} menu={menu} />
+        {restaurants.map((restaurant) =>
+            <Restaurant item={restaurant} />
         )}
     </div>
 );

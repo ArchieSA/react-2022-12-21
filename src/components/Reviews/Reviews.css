@@ -1,0 +1,8 @@
+.reviews > * {
+    margin: 0;
+    padding: 5px;
+}
+
+.review-list  {
+    list-style-type: none;
+}

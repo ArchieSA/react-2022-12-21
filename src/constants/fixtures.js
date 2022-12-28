@@ -139,4 +139,80 @@ export const restaurants = [
             },
         ],
     },
+    {
+        id: 'd9241927-09e1-44f3-8986-a76346869037',
+        name: 'Test1',
+        menu: [
+            {
+                id: '6c02c2ce-b868-4191-b4a7-8686429f4bac',
+                name: 'Flat Iron Steak',
+                price: 10,
+                ingredients: ['beef'],
+            },
+            {
+                id: '99bb6fbb-e53b-4b7e-b9c2-23b63b77385d',
+                name: 'Flat Iron Burger',
+                price: 10,
+                ingredients: ['bread', 'beef'],
+            },
+        ],
+        reviews: [
+            {
+                id: '5db6247b-ab1c-49db-be1f-8dd27fd38b81',
+                user: 'Anton1',
+            },
+            {
+                id: '381b0c31-6360-43ff-80d1-581a116159d8',
+                text: 'Meat here is extremely delicious',
+            },
+            {
+                id: '381b0c31-6360-43ff-80d1-581a116159d8',
+                user: 'Anton3',
+                rating: 5,
+            },
+        ],
+    },
+    {
+        id: 'd9241927-09e1-44f3-8986-a76346869037',
+        name: 'Test2',
+        menu: [
+            {
+                id: '6c02c2ce-b868-4191-b4a7-8686429f4bac',
+                ingredients: ['beef'],
+            },
+            {
+                id: '99bb6fbb-e53b-4b7e-b9c2-23b63b77385d',
+                name: 'Flat Iron Burger',
+                price: 10,
+            },
+        ],
+        reviews: [
+            {
+                id: '5db6247b-ab1c-49db-be1f-8dd27fd38b81',
+                user: 'Anton1',
+            },
+        ],
+    },
+    {
+        id: 'd9241927-09e1-44f3-8986-a76346869037',
+        name: 'Test3',
+        menu: [
+            {
+                id: '6c02c2ce-b868-4191-b4a7-8686429f4bac',
+                name: 'Flat Iron Steak',
+                ingredients: ['beef'],
+            },
+            {
+                id: '99bb6fbb-e53b-4b7e-b9c2-23b63b77385d',
+                price: 10,
+                ingredients: ['bread', 'beef'],
+            },
+        ],
+        reviews: [
+            {
+                id: '5db6247b-ab1c-49db-be1f-8dd27fd38b81',
+                user: 'Anton1',
+            },
+        ],
+    },
 ];

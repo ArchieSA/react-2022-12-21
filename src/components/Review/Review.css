@@ -1,0 +1,6 @@
+.review {
+    display: grid;
+    grid-template-columns: auto 100px;
+    border: 1px solid gray;
+    margin-bottom: 5px;
+}

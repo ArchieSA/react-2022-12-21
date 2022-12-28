@@ -1,0 +1,9 @@
+.menu > * {
+    margin: 0;
+    padding: 5px;
+}
+
+.menu-list  {
+    list-style-type: none;
+}
+

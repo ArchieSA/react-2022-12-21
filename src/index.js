@@ -10,11 +10,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
 root.render(
-    <div>
-        {restaurants.map(({name, menu}) =>
-            <Restaurant name={name} menu={menu} />
-        )}
-    </div>
+  <div>
+    {restaurants.map(({name, menu, reviews}) => {
+      return (<div>
+        <Restaurant name={name} menu={menu} reviews={reviews} />
+        <hr/>
+      </div>)
+    })}
+  </div>
 );
 
 

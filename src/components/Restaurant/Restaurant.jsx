@@ -5,10 +5,8 @@ export const Restaurant = ({ name, menu, reviews }) => {
     return (
         <div>
             <h1>{name}</h1>
-            <div>
-                <Menu menu = {menu}/>
-                <Reviews reviews={reviews}/>
-            </div>
+            <Menu menu = {menu}/> 
+            <Reviews reviews={reviews}/>
         </div>
     )
 }

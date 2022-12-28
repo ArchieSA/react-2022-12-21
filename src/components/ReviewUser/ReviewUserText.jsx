@@ -3,7 +3,7 @@
 export const ReviewUserText = ({text}) => {
     return (
         <div>
-            {text}
+            Text: {text}
         </div>
     );
 };

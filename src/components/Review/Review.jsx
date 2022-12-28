@@ -5,6 +5,7 @@ import {ReviewUserRating} from "../ReviewUser/ReviewUserRating";
 export const Review = ({user,text,rating}) => {
     return (
         <div>
+            <h3>Review </h3>
             <ul>
                 <li><ReviewUserName user={user}></ReviewUserName></li>
                 <li><ReviewUserText text={text}></ReviewUserText></li>

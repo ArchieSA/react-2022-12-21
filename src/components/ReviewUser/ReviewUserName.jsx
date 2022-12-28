@@ -2,7 +2,7 @@
 export const ReviewUserName = ({user}) => {
     return (
         <div>
-            {user}
+            Name: {user}
         </div>
     );
 };

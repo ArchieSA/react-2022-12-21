@@ -3,7 +3,7 @@
 export const ReviewUserRating = ({rating}) => {
     return (
         <div>
-            {rating}
+            Rating: {rating}
         </div>
     );
 };

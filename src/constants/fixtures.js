@@ -184,7 +184,6 @@ export const restaurants = [
                 id: '99bb6fbb-e53b-4b7e-b9c2-23b63b77385d',
                 name: 'Flat Iron Burger',
                 price: 10,
-                ingredients: ['bread', 'beef'],
             },
         ],
         reviews: [

@@ -11,8 +11,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     <div>
-        {restaurants.map(({name, menu}) =>
-            <Restaurant name={name} menu={menu} />
+        {restaurants.map(({id, name, menu, reviews}) =>
+            <Restaurant key={id} id={id} name={name} menu={menu} reviews={reviews} />
         )}
     </div>
 );

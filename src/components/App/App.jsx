@@ -1,9 +1,9 @@
-import { Main } from "../Main/Main";
+import { MainContent } from "../MainContent/MainContent";
 
 export const App = ({ restaurants }) => {
   return (
     <div>
-      <Main restaurants={restaurants}/>
+      <MainContent restaurants={restaurants}/>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { RestaurantList } from '../RestaurantList/RestaurantList';
 
-export const Main = ({ restaurants }) => {
+export const MainContent = ({ restaurants }) => {
   return (
     <div>
       <RestaurantList restaurants={restaurants}/>

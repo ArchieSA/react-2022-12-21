@@ -17,7 +17,7 @@ export const Dish = ({ dish }) => {
         ingredients?.length > 0
         && (
           <p>
-            ingredients: {ingredients.map((ingredient, index) => `${index > 0 ? ', ' : ''}${ingredient}`)}
+            ingredients: {ingredients.join(', ')}
           </p>
         )
       }

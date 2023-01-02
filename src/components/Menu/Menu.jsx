@@ -7,6 +7,7 @@ export const Menu = ({menu}) => {
             {
                 menu.map((dish) => <li>
                     <Dish dish={dish}/>
+
                 </li>)
             }
         </ul>

@@ -33,6 +33,15 @@ export const Dish = ({dish}) => {
         return null;
     }
 
+    let i = 0;
+
+    let dishes = [];
+
+    while(i<count) {
+        dishes.push(i);
+        i++;
+    }
+
     return <div>
         {dish.name}
         <div>
@@ -40,7 +49,15 @@ export const Dish = ({dish}) => {
             {count}
             <Button onClick={increment}>+</Button>
 
-            { count > 0 ? <Ingredients ingredients={ dish.ingredients } /> : null }
+            { count > 0 ? <hr /> : null }
+
+            {
+                count > 0 ? dishes.map((element) => <div>
+                    {dish.name} #{element+1}
+                    <Ingredients ingredients={ dish.ingredients } />
+                    <hr />
+                </div>) : null
+            }
 
         </div>
     </div>

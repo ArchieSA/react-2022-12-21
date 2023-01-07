@@ -1,21 +1,12 @@
-import {Button} from "../Button/Button";
+import {Menu} from "../Menu/Menu";
+import {Reviews} from "../Reviews/Reviews";
 
-export const Restaurant = ({ name, menu }) => {
+export const Restaurant = ({ restaurant }) => {
     return (
         <div>
-            <h1>{name}</h1>
-            <div>
-                <h2>Menu</h2>
-                <ul>
-                    {
-                        menu.map(({name}) => <li>
-                            {name}
-                            <Button>-</Button>
-                            <Button>+</Button>
-                        </li>)
-                    }
-                </ul>
-            </div>
+            <h1>{restaurant.name}</h1>
+            <Menu menu={restaurant.menu}/>
+            <Reviews reviews={restaurant.reviews}/>
         </div>
     )
 }

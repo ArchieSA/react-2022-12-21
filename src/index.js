@@ -11,8 +11,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     <div>
-        {restaurants.map(({name, menu}) =>
-            <Restaurant name={name} menu={menu} />
+        {restaurants.map((restaurant) =>
+            <Restaurant restaurant={restaurant} />
         )}
     </div>
 );
@@ -24,6 +24,7 @@ root.render(
 //         React.createElement('ul', {children: restaurant.menu.map(
 //             ({ name}) => React.createElement('li', {children: name}))
 //         })
+//         React.createElement(Restaurant, {name: 'Name', menu: []})
 //     ]
 // }));
 

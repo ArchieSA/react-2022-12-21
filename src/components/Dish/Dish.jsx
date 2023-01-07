@@ -16,9 +16,7 @@ export const Dish = ({dish}) => {
     return <div>
         {dish.name}
         <div>
-            <Button onClick={removeDish}>
-                -
-            </Button>
+            <Button onClick={removeDish}>-</Button>
             {count}
             <Button onClick={() => setCount(count + 1)}>+</Button>
         </div>

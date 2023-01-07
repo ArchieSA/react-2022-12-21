@@ -16,12 +16,8 @@ export const Ingredient = ({name}) => {
 
   return <div>
     {name}
-    <Button onClick={removeIngredient}>
-      -
-    </Button>
+    <Button onClick={removeIngredient}>-</Button>
     {count}
-    <Button onClick={addIngredient}>
-      +
-    </Button>
+    <Button onClick={addIngredient}>+</Button>
   </div>
 }

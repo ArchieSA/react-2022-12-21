@@ -1,22 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { restaurants } from './constants/fixtures'
+import { restaurants } from './constants/fixtures';
 
 import './index.css';
-import {Restaurant} from "./components/Restaurant/Restaurant";
+import { Restaurant } from './components/Restaurant/Restaurant';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-
 root.render(
-    <div>
-        {restaurants.map((restaurant) =>
-            <Restaurant restaurant={restaurant} />
-        )}
-    </div>
+  <div>
+    {restaurants.map((restaurant) => (
+      <Restaurant elRestaurant={restaurant} />
+    ))}
+  </div>,
 );
-
 
 // root.render(React.createElement('div', {
 //     children: [
@@ -27,4 +25,3 @@ root.render(
 //         React.createElement(Restaurant, {name: 'Name', menu: []})
 //     ]
 // }));
-

@@ -14,5 +14,5 @@ export const Dish = ({id, price, ingredients, name}) => {
             </ul>
         </div>
     )
-
+    
 }

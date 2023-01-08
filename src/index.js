@@ -24,6 +24,7 @@ root.render(
 //         React.createElement('ul', {children: restaurant.menu.map(
 //             ({ name}) => React.createElement('li', {children: name}))
 //         })
+//         React.createElement(Restaurant, {name: 'Name', menu: []})
 //     ]
 // }));
 

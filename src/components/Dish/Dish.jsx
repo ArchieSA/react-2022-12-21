@@ -1,19 +1,18 @@
-import {Button} from "../Button/Button";
+import {Ingredient} from "../Ingredient/Ingredient";
 import {useState} from "react";
 
-export const Dish = ({dish}) => {
-    const [count, setCount] = useState(0);
+export const Dish = ({id, price, ingredients, name}) => {
 
-    if (!dish) {
-        return null;
-    }
+    const [chosen, setChosen] = useState(false);
 
-    return <div>
-        {dish.name}
-        <div>
-            <Button onClick={() => setCount(count - 1)}>-</Button>
-            {count}
-            <Button onClick={() => setCount(count + 1)}>+</Button>
+    return(
+        <div id={id}>
+            <span>price: {price}</span>
+            <ul>
+                <h4><input type="checkbox" value={chosen} onClick={() => setChosen(!chosen)} /> {name}</h4>
+                {chosen && ingredients.map(ingredient => <li key={ingredient}><Ingredient ingredient={ingredient} /></li>)}
+            </ul>
         </div>
-    </div>
+    )
+    
 }

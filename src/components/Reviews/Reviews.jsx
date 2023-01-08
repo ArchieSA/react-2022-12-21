@@ -1,14 +1,12 @@
 import {Review} from "../Review/Review";
 
-export const Reviews = ({reviews}) => {
-    return <div>
-        <h2>Reviews</h2>
-        <ul>
-            {
-                reviews.map((review) => <li>
-                    <Review review={review}/>
-                </li>)
-            }
-        </ul>
-    </div>
+export const Reviews = ({reviews, name}) => {
+
+    return(
+        <>
+            <p> - Reviews of <strong>{name}</strong>: </p>
+            <Review reviews={reviews} />
+        </>
+    )
+
 }

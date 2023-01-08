@@ -1,14 +1,16 @@
 import {Dish} from "../Dish/Dish";
 
 export const Menu = ({menu}) => {
-    return <div>
-        <h2>Menu</h2>
-        <ul>
-            {
-                menu.map((dish) => <li>
-                    <Dish dish={dish}/>
-                </li>)
-            }
-        </ul>
-    </div>
+
+    return (
+        <div>
+            {                 
+                menu?.map(v => (
+                    <li key={v.id}>                      
+                        <Dish id={v.id} price={v.price} ingredients={v.ingredients} name={v.name} />                                               
+                    </li>
+                ))                 
+            }            
+        </div>
+    )
 }

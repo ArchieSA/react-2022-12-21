@@ -1,6 +1,5 @@
 import {Menu} from "../Menu/Menu";
 import {Reviews} from "../Reviews/Reviews";
-
 export const Restaurant = ({ restaurant }) => {
     return (
         <div>

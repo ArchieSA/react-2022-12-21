@@ -4,11 +4,9 @@ import {useState} from "react";
 
 export const Dish = ({dish}) => {
     const [count, setCount] = useState(0);
-    const [isShown, setIsShown] = useState(false);
     function preCount(){
         if(count < 2){
             setCount(0)
-            setIsShown(false)
         }else{
             setCount(count => count - 1)
         }
@@ -19,8 +17,6 @@ export const Dish = ({dish}) => {
             setCount(5)
         }else{
             setCount(count => count + 1)
-            setIsShown(true); 
-            console.log(count)
         }   
     }
     return <div>
@@ -30,6 +26,6 @@ export const Dish = ({dish}) => {
             {count}
             <Button onClick={nextCount}>+</Button>
         </div>
-        {isShown === true ? <Ingredients ingredients={dish.ingredients}/> : null}
+        {count > 0 ? <Ingredients ingredients={dish.ingredients}/> : null}
     </div>
 }

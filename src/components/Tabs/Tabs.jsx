@@ -5,6 +5,10 @@ export const Tabs = ({
   activeRestaurant,
   setActiveRestaurant,
 }) => {
+  if (!restaurants) {
+    return false;
+  }
+
   return (
     <div>
       {restaurants.map((restaurant) => (

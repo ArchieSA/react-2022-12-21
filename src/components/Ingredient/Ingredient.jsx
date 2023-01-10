@@ -28,11 +28,11 @@ export const Ingredient = ({ name }) => {
     <div>
       <p>{name}</p>
 
-      <Button onClick={addIngredient}>-</Button>
+      <Button onClick={addIngredient} disabled={ingredientAmount === 1}>-</Button>
 
       <span>{ingredientAmount}</span>
 
-      <Button onClick={removeIngredient}>+</Button>
+      <Button onClick={removeIngredient} disabled={ingredientAmount === 5}>+</Button>
     </div>
   );
 }

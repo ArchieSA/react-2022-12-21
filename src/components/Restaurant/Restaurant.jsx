@@ -6,9 +6,9 @@ export const Restaurant = ({ name, menu, reviews }) => {
     <div>
       <h2>{name}</h2>
 
-      {menu?.length > 0 ? <Menu menu={menu}/> : 'No menu'}
-      
-      {reviews?.length > 0 ? <ReviewList reviews={reviews}/> : 'No reviews'}
+      {menu?.length > 0 ? <Menu menu={menu} /> : 'No menu'}
+
+      {reviews?.length > 0 ? <ReviewList reviews={reviews} /> : 'No reviews'}
     </div>
   );
-}
+};

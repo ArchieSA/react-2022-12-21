@@ -10,4 +10,4 @@ export const Review = ({ review }) => {
       <h4>{rating}</h4>
     </div>
   );
-}
+};

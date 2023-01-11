@@ -3,7 +3,7 @@ import {Reviews} from "../Reviews/Reviews";
 
 export const Restaurant = ({ restaurant }) => {
     return (
-        <div>
+        <div Style={'margin-left: 30px;'}>
             <h1>{restaurant.name}</h1>
             <Menu menu={restaurant.menu}/>
             <Reviews reviews={restaurant.reviews}/>

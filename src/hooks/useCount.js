@@ -13,5 +13,10 @@ export const useCount = ({ defaultValue = 0, min = 0, max = 5 } = {}) => {
     [max]
   );
 
-  return { count, decrement, increment };
+  const installDefaultValue = useCallback(
+    () => setCount(defaultValue),
+    [defaultValue]
+  );
+
+  return { count, decrement, increment, installDefaultValue };
 };

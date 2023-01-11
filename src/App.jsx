@@ -1,12 +1,11 @@
 import { restaurants } from './constants/fixtures';
-import { Restaurant } from './components/Restaurant/Restaurant';
 import React from 'react';
+import { RestaurantTabs } from './components/Restaurants/RestaurantTabs/RestaurantTabs';
 
 export const App = () => {
   return (
-    <div>
-      {/*<Tabs />*/}
-      {/*<Restaurant restaurant={activeRestaurant} />*/}
+    <div className="rest">
+      <RestaurantTabs restaurants={restaurants} />
     </div>
   );
 };

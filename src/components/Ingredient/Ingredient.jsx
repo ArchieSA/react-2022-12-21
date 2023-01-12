@@ -1,19 +1,13 @@
 import { Button } from '../Button/Button';
-import { Ingredients } from '../Ingredients/Ingredients';
 import { useCount } from '../../hooks/useCount';
 
-const MAX_DISH_COUNT = 6;
+const MAX_INGREDIENT_COUNT = 3;
 
-export const Dish = ({ dish }) => {
+export const Ingredient = ({ name }) => {
   const { count, increment, decrement } = useCount({
-    max: MAX_DISH_COUNT,
+    defaultValue: 1,
+    max: MAX_INGREDIENT_COUNT,
   });
-
-  if (!dish) {
-    return null;
-  }
-
-  const { name, ingredients } = dish;
 
   return (
     <div>
@@ -23,9 +17,6 @@ export const Dish = ({ dish }) => {
         {count}
         <Button onClick={increment}>+</Button>
       </div>
-      {count > 0 && ingredients?.length > 0 && (
-        <Ingredients ingredients={ingredients} />
-      )}
     </div>
   );
 };

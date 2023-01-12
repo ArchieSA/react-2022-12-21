@@ -1,5 +1,5 @@
-import { Button } from '../Button/Button';
-import { useCount } from '../../hooks/useCount';
+import { Button } from "../Button/Button";
+import { useCount } from "../../hooks/useCount";
 
 const MAX_INGREDIENT_COUNT = 3;
 
@@ -13,9 +13,13 @@ export const Ingredient = ({ name }) => {
     <div>
       {name}
       <div>
-        <Button onClick={decrement}>-</Button>
+        <Button onClick={decrement} disabled={count === 0}>
+          -
+        </Button>
         {count}
-        <Button onClick={increment}>+</Button>
+        <Button onClick={increment} disabled={count === MAX_INGREDIENT_COUNT}>
+          +
+        </Button>
       </div>
     </div>
   );

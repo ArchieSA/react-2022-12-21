@@ -1,12 +1,16 @@
-import {Menu} from "../Menu/Menu";
-import {Reviews} from "../Reviews/Reviews";
+import { Menu } from "../Menu/Menu";
+import { Reviews } from "../Reviews/Reviews";
 
-export const Restaurant = ({ restaurant }) => {
-    return (
-        <div>
-            <h1>{restaurant.name}</h1>
-            <Menu menu={restaurant.menu}/>
-            <Reviews reviews={restaurant.reviews}/>
-        </div>
-    )
-}
+export const Restaurant = ({ restaurant, activeRestaurant }) => {
+  if (activeRestaurant !== restaurant) {
+    return null;
+  }
+  return (
+    <div>
+      <h1>{restaurant.name}</h1>
+
+      <Menu menu={restaurant.menu} />
+      <Reviews reviews={restaurant.reviews} />
+    </div>
+  );
+};

@@ -1,4 +1,4 @@
-import { Dish } from '../Dish/Dish';
+import { Dish } from "../Dish/Dish";
 
 export const Menu = ({ menu }) => {
   return (

@@ -1,7 +1,7 @@
-import { useState } from 'react';
-
 import { IngredientList } from '../IngredientList/IngredientList';
 import { Button } from '../Button/Button';
+
+import { useCount } from '../../hooks/useCount';
 
 import {
   MIN_DISH_AMOUNT,
@@ -11,21 +11,7 @@ import {
 export const Dish = ({ dish }) => {
   const { name, price, ingredients } = dish;
 
-  const [dishAmount, setDishAmount] = useState(0);
-
-  const addDish = () => {
-    if (dishAmount === MAX_DISH_AMOUNT) {
-      return;
-    }
-    setDishAmount(dishAmount + 1);
-  };
-
-  const removeDish = () => {
-    if (dishAmount === MIN_DISH_AMOUNT) {
-      return;
-    }
-    setDishAmount(dishAmount - 1);
-  };
+  const { count, decrement, increment } = useCount({ min: MIN_DISH_AMOUNT, max: MAX_DISH_AMOUNT });
 
   return (
     <div>
@@ -33,17 +19,17 @@ export const Dish = ({ dish }) => {
 
       <p>${price || 'Price is not provided'}</p>
 
-      <Button onClick={removeDish} disabled={dishAmount === 0}>
+      <Button onClick={decrement} disabled={count === MIN_DISH_AMOUNT}>
         -
       </Button>
 
-      {!!dishAmount && <span>{dishAmount}</span>}
+      {!!count && <span>{count}</span>}
 
-      <Button onClick={addDish} disabled={dishAmount === 5}>
+      <Button onClick={increment} disabled={count === MAX_DISH_AMOUNT}>
         +
       </Button>
 
-      {!!dishAmount && ingredients?.length > 0 && (
+      {!!count && ingredients?.length > 0 && (
         <IngredientList ingredients={ingredients} />
       )}
     </div>

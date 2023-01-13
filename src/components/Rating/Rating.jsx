@@ -23,7 +23,7 @@ export const Rating = ({ onChange, value, size, className }) => {
                 })
             : null
         }
-        className={classnames(styles.root, className, styles[size])}
+        className={classnames(styles.root, styles[className], styles[size])}
         alt="gold star"
       />
     ) : (
@@ -38,7 +38,7 @@ export const Rating = ({ onChange, value, size, className }) => {
                 })
             : null
         }
-        className={classnames(styles.root, className, styles[size])}
+        className={classnames(styles.root, styles[className], styles[size])}
         alt="black star"
       />
     );

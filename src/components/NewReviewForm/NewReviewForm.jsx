@@ -1,4 +1,6 @@
 import { useReducer } from 'react';
+import { Size } from '../../constants/ui';
+import { Rating } from '../Rating/Rating';
 
 const DEFAULT_FORM_VALUE = {
   name: '',
@@ -40,12 +42,12 @@ const reducer = (state, action) => {
 export const NewReviewForm = ({}) => {
   const [formValue, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
 
-  console.log(formValue);
-
   return (
     <div>
+      <h2>Add Review</h2>
       <div>
         <label>Name</label>
+        <br />
         <input
           value={formValue.name}
           onChange={(event) =>
@@ -58,6 +60,7 @@ export const NewReviewForm = ({}) => {
       </div>
       <div>
         <label>Text</label>
+        <br />
         <input
           value={formValue.text}
           onChange={(event) =>
@@ -70,16 +73,8 @@ export const NewReviewForm = ({}) => {
       </div>
       <div>
         <label>Rating</label>
-        <input
-          value={formValue.rating}
-          onChange={(event) =>
-            dispatch({
-              type: FORM_ACTIONS.changeRating,
-              payload: Number(event.target.value),
-            })
-          }
-          type="number"
-        />
+        <br />
+        <Rating value={formValue.rating} size={Size.m} onChange={dispatch} />
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import { Rating } from '../Rating/Rating';
 const DEFAULT_FORM_VALUE = {
   name: '',
   text: '',
-  rating: 5,
+  rating: 1,
 };
 
 const FORM_ACTIONS = {

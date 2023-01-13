@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 
-import { ReactComponent as Star } from './img/star.svg';
-import { ReactComponent as StarGold } from './img/star-gold.svg';
+import Star from './img/star.svg';
+import StarGold from './img/star-gold.svg';
 import classnames from 'classnames';
 import { MAX_RATING } from '../../constants/ui';
 
@@ -12,7 +12,8 @@ export const Rating = ({ onChange, value, size, className }) => {
 
   return positions.map((position) => {
     return position <= value ? (
-      <StarGold
+      <img
+        src={StarGold}
         onClick={
           onChange
             ? () =>
@@ -23,9 +24,11 @@ export const Rating = ({ onChange, value, size, className }) => {
             : null
         }
         className={classnames(styles.root, className, styles[size])}
+        alt="gold star"
       />
     ) : (
-      <Star
+      <img
+        src={Star}
         onClick={
           onChange
             ? () =>
@@ -36,6 +39,7 @@ export const Rating = ({ onChange, value, size, className }) => {
             : null
         }
         className={classnames(styles.root, className, styles[size])}
+        alt="black star"
       />
     );
   });

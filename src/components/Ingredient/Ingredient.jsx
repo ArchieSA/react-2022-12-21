@@ -1,38 +1,23 @@
-import { useState } from 'react';
 
 import { Button } from '../Button/Button';
+import { useCount } from '../../hooks/useCount';
 
-import {
-  MIN_INGREDIENT_AMOUNT,
-  MAX_INGREDIENT_AMOUNT,
-} from '../../constants/order-details';
+const MAX_INGREDIENT_COUNT = 3;
 
 export const Ingredient = ({ name }) => {
-  const [ingredientAmount, setIngredientAmount] = useState(1);
-
-  const addIngredient = () => {
-    if (ingredientAmount === MIN_INGREDIENT_AMOUNT) {
-      return;
-    }
-    setIngredientAmount(ingredientAmount - 1);
-  }
-
-  const removeIngredient = () => {
-    if (ingredientAmount === MAX_INGREDIENT_AMOUNT) {
-      return;
-    }
-    setIngredientAmount(ingredientAmount + 1);
-  }
+  const { count, increment, decrement } = useCount({
+    defaultValue: 1,
+    max: MAX_INGREDIENT_COUNT,
+  });
 
   return (
     <div>
-      <p>{name}</p>
-
-      <Button onClick={addIngredient} disabled={ingredientAmount === 1}>-</Button>
-
-      <span>{ingredientAmount}</span>
-
-      <Button onClick={removeIngredient} disabled={ingredientAmount === 5}>+</Button>
+      {name}
+      <div>
+        <Button onClick={decrement}>-</Button>
+        {count}
+        <Button onClick={increment}>+</Button>
+      </div>
     </div>
   );
-}
+};

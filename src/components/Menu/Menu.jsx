@@ -3,17 +3,14 @@ import { Dish } from '../Dish/Dish';
 export const Menu = ({ menu }) => {
   return (
     <div>
-      <h3>Menu</h3>
-      
+<h2>Menu</h2>
       <ul>
-        {
-          menu.map((menuItem) => (
-            <li key={menuItem['id']}>
-              <Dish dish={menuItem} />
-            </li>
-          ))
-        }
+        {menu.map((dish) => (
+          <li>
+            <Dish dish={dish} />
+          </li>
+        ))}
       </ul>
     </div>
   );
-}
+};

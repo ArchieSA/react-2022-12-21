@@ -1,53 +1,39 @@
-import { useState } from 'react';
 
-import { IngredientList } from '../IngredientList/IngredientList';
 import { Button } from '../Button/Button';
+import { Ingredients } from '../Ingredients/Ingredients';
+import { useCount } from '../../hooks/useCount';
+import classnames from 'classnames';
 
-import {
-  MIN_DISH_AMOUNT,
-  MAX_DISH_AMOUNT,
-} from '../../constants/order-details';
+import styles from './styles.module.css';
+
+const MAX_DISH_COUNT = 6;
 
 export const Dish = ({ dish }) => {
-  const {
-    name,
-    price,
-    ingredients,
-  } = dish;
+  const { count, increment, decrement } = useCount({
+    max: MAX_DISH_COUNT,
+  });
 
-  const [dishAmount, setDishAmount] = useState(0);
-
-  const addDish = () => {
-    if (dishAmount === MAX_DISH_AMOUNT) {
-      return;
-    }
-    setDishAmount(dishAmount + 1);
+  if (!dish) {
+    return null;
   }
 
-  const removeDish = () => {
-    if (dishAmount === MIN_DISH_AMOUNT) {
-      return;
-    }
-    setDishAmount(dishAmount - 1);
-  }
+  const { name, ingredients } = dish;
 
   return (
-    <div>
-      <h4>{name || 'Noname dish'}</h4>
-
-      <p>${price || 'Price is not provided'}</p>
-
-
-      <Button onClick={removeDish} disabled={dishAmount === 0}>-</Button>
-      
-      {!!dishAmount && <span>{dishAmount}</span>}
-
-      <Button onClick={addDish} disabled={dishAmount === 5}>+</Button>
-      
-      { !!dishAmount
-        && ingredients?.length > 0
-        && <IngredientList ingredients={ingredients}/>
-      }
+    <div
+      className={classnames(styles.root, {
+        [styles.rootBig]: count > 4,
+      })}
+    >
+      {name}
+      <div>
+        <Button onClick={decrement}>-</Button>
+        {count}
+        <Button onClick={increment}>+</Button>
+      </div>
+      {count > 0 && ingredients?.length > 0 && (
+        <Ingredients ingredients={ingredients} />
+      )}
     </div>
   );
-}
+};

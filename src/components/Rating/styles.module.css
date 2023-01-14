@@ -1,0 +1,8 @@
+.root {
+    background-image: url("./img/star.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+}

@@ -1,3 +1,10 @@
 .root {
-    background-color: blueviolet;
+  display: flex;
+  justify-content: flex-start;
+
+  padding: 10px;
+}
+
+.rating {
+  margin-left: auto;
 }

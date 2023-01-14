@@ -1,5 +1,6 @@
 .root {
     border-radius: 4px;
+    padding: 5px 10px;
 }
 
 
@@ -15,10 +16,9 @@
 
 .prime {
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid rgb(10, 4, 65);
 }
 .second {
-    background-color: dimgrey;
-    border: 1px solid green;
+    background-color: rgb(10, 4, 65);
     color: white;
 }

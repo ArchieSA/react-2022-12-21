@@ -1,5 +1,6 @@
 import { Button } from '../Button/Button';
 import { useCount } from '../../hooks/useCount';
+import styles from './styles.module.css';
 
 const MAX_INGREDIENT_COUNT = 3;
 
@@ -11,7 +12,7 @@ export const Ingredient = ({ name }) => {
 
   return (
     <div>
-      {name}
+      <span className={styles.root}>{name}</span>
       <div>
         <Button onClick={decrement}>-</Button>
         {count}

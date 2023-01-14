@@ -1,8 +1,11 @@
 import { Menu } from '../Menu/Menu';
 import { Reviews } from '../Reviews/Reviews';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { NewReviewForm } from '../NewReviewForm/NewReviewForm';
 import { Rating } from '../Rating/Rating';
+import { Size } from '../../constants/ui';
+import styles from './styles.module.css';
+import classnames from 'classnames';
 
 export const Restaurant = ({ restaurant }) => {
   const { reviews, menu, name } = restaurant;
@@ -29,10 +32,9 @@ export const Restaurant = ({ restaurant }) => {
   // );
 
   return (
-    <div>
+    <div className={classnames(styles.root)}>
       <h1>{name}</h1>
-      <div>{rating}</div>
-      <Rating />
+      <Rating size={Size.l} value={rating} />
       <Menu menu={menu} />
       <Reviews reviews={reviews} />
       <NewReviewForm />

@@ -1,7 +1,4 @@
 .root {
     color: rgb(10, 4, 65);
-}
-
-.rootBig {
-    color: #8b7807;
+    font-style: italic;
 }

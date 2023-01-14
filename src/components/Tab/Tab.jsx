@@ -1,12 +1,13 @@
 import { Button } from '../Button/Button';
 
-export const Tab = ({ setActiveRestaurantId, restaurant }) => {
+export const Tab = ({ onTabClick, restaurant, isActive }) => {
   return (
     <Button
       {...restaurant}
-      onClick={() => setActiveRestaurantId(restaurant['id'])}
+      onClick={() => onTabClick(restaurant['id'])}
+      disabled={isActive}
     >
       {restaurant.name}
     </Button>
-  )
-}
+  );
+};

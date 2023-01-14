@@ -1,4 +1,7 @@
 import { useReducer } from 'react';
+import { Rating } from '../Rating/Rating';
+import { Size } from '../../constants/ui';
+import styles from './styles.module.css';
 
 const DEFAULT_FORM_VALUE = {
   name: '',
@@ -43,7 +46,7 @@ export const NewReviewForm = ({}) => {
   console.log(formValue);
 
   return (
-    <div>
+    <div className={styles.root}>
       <div>
         <label>Name</label>
         <input
@@ -81,6 +84,7 @@ export const NewReviewForm = ({}) => {
           type="number"
         />
       </div>
+      <Rating size={Size.m} value={formValue.rating} onChange={dispatch} />
     </div>
   );
 };

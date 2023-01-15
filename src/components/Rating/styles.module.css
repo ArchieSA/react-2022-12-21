@@ -1,8 +1,33 @@
 .root {
-    background-image: url("./img/star.svg");
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    min-width: 200px;
+    max-width: 300px;
+  /*   background-image: url("./img/star.svg");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     width: 40px;
     height: 40px;
+    */
+}
+
+.s {
+    transform: scale(0.5);
+}
+
+.sgrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 2px;
+    min-width: 100px;
+    max-width: 120px;
+}
+
+.m {
+    transform: scale(0.7)
+}
+.l {
+    transform: scale(0.9)
 }

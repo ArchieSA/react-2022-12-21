@@ -1,4 +1,6 @@
 import { useReducer } from 'react';
+import { RatingButton } from '../RatingButton/RatingButton';
+import styles from './styles.module.css';
 
 const DEFAULT_FORM_VALUE = {
   name: '',
@@ -37,15 +39,14 @@ const reducer = (state, action) => {
   }
 };
 
-export const NewReviewForm = ({}) => {
+export const NewReviewForm = (props) => {
   const [formValue, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
-
-  console.log(formValue);
 
   return (
     <div>
-      <div>
-        <label>Name</label>
+      <h3>New review</h3>
+      <div className={styles.field}>
+        <label className={styles.label}>Name</label>
         <input
           value={formValue.name}
           onChange={(event) =>
@@ -56,8 +57,8 @@ export const NewReviewForm = ({}) => {
           }
         />
       </div>
-      <div>
-        <label>Text</label>
+      <div className={styles.field}>
+        <label className={styles.label}>Text</label>
         <input
           value={formValue.text}
           onChange={(event) =>
@@ -68,17 +69,19 @@ export const NewReviewForm = ({}) => {
           }
         />
       </div>
-      <div>
-        <label>Rating</label>
-        <input
+      <div className={styles.field}>
+        <label className={styles.label}>Rating</label>
+        <RatingButton
+          size={5}
           value={formValue.rating}
-          onChange={(event) =>
-            dispatch({
-              type: FORM_ACTIONS.changeRating,
-              payload: Number(event.target.value),
-            })
-          }
-          type="number"
+          onChange={(e) => {
+            if (e.target.checked) {
+              dispatch({
+                type: FORM_ACTIONS.changeRating,
+                payload: e.target.value,
+              });
+            }
+          }}
         />
       </div>
     </div>

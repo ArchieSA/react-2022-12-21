@@ -24,11 +24,13 @@ export const Dish = ({ dish }) => {
         [styles.rootBig]: count > 4,
       })}
     >
-      {name}
-      <div>
-        <Button onClick={decrement}>-</Button>
-        {count}
-        <Button onClick={increment}>+</Button>
+      <div className={styles.dish}>
+        {name}
+        <div>
+          <Button onClick={decrement}>-</Button>
+          {count}
+          <Button onClick={increment}>+</Button>
+        </div>
       </div>
       {count > 0 && ingredients?.length > 0 && (
         <Ingredients ingredients={ingredients} />

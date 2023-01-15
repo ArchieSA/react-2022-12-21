@@ -3,6 +3,15 @@
   flex-direction: row;
 }
 
+/* .container {
+  width: 50px;
+  height: 50px;
+} */
+
+.input {
+  visibility: hidden;
+}
+
 .gold {
   background-size: contain;
   background-image: url('../../media/star-gold.svg');

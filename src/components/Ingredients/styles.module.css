@@ -1,0 +1,15 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.ingredients {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.ingredient {
+  display: flex;
+  flex-direction: row;
+}

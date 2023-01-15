@@ -1,4 +1,14 @@
 .root {
+  /* border-top: 1px solid black; */
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.dish {
+  display: flex;
+  flex-direction: row;
 }
 
 .rootBig {

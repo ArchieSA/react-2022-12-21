@@ -1,10 +1,11 @@
 import styles from './styles.module.css';
+import { Rating } from '../Rating/Rating';
 
 export const Review = ({ review }) => {
   return (
     <div className={styles.root}>
-      <div>{review.text}</div>
-      <div>{review.rating}</div>
+      <div>{`${review.user} - ${review.text}`}</div>
+      <Rating value={review.rating} size={'m'} />
     </div>
   );
 };

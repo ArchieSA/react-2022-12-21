@@ -1,8 +1,12 @@
-.root {
-    background-image: url("./img/star.svg");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
+.s {
+  height: 18px;
+  width: 18px;
+}
+.m {
+  height: 36px;
+  width: 36px;
+}
+.l {
+  height: 54px;
+  width: 54px;
 }

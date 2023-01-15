@@ -1,24 +1,24 @@
 .root {
-    border-radius: 4px;
+  border-radius: 4px;
+  margin: 5px;
 }
-
 
 .s {
-    font-size: 14px;
+  font-size: 14px;
 }
 .m {
-    font-size: 16px;
+  font-size: 16px;
 }
 .l {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .prime {
-    background-color: white;
-    border: 1px solid black;
+  background-color: white;
+  border: 1px solid black;
 }
 .second {
-    background-color: dimgrey;
-    border: 1px solid green;
-    color: white;
+  background-color: darkgray;
+  border: 1px solid black;
+  color: white;
 }

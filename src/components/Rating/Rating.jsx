@@ -1,11 +1,20 @@
 import styles from './styles.module.css';
 
-// import Star from './img/star.svg';
-import { ReactComponent as Star } from './img/star.svg';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
-export const Rating = ({ onChange, value, size, className }) => {
-  // return <div className={classnames(styles.root, className)} />;
-  // return <img src={Star} loading="lazy" />;
-  return <Star />;
+export const Rating = ({ value, size = 'm', ratingSize = 5 }) => {
+  const stars = new Array(ratingSize).fill(0);
+  return (
+    <div className={styles.root}>
+      {stars.map((e, i) =>
+        i < value ? (
+          <div className={classNames(styles[size], styles.gold)} />
+        ) : (
+          <div
+            className={classNames(styles.root, styles[size], styles.black)}
+          />
+        )
+      )}
+    </div>
+  );
 };

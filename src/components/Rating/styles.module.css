@@ -6,3 +6,22 @@
     width: 40px;
     height: 40px;
 }
+
+.active {
+    filter: invert(88%) sepia(32%) saturate(3348%) hue-rotate(0deg) brightness(108%) contrast(103%);
+}
+
+.s {
+    height: 20px;
+    width: 20px;
+}
+
+.m {
+    height: 40px;
+    width: 40px;
+}
+
+.l {
+    height: 64px;
+    width: 64px;
+}

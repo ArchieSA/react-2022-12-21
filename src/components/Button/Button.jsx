@@ -7,6 +7,8 @@ import styles from './styles.module.css';
 export const ButtonViewVariant = {
   prime: 'prime',
   second: 'second',
+  navigation: 'navigation',
+  navigationActive: 'navigation_active',
 };
 
 export const Button = ({

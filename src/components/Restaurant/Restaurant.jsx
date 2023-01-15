@@ -1,8 +1,11 @@
-import { Menu } from '../Menu/Menu';
-import { Reviews } from '../Reviews/Reviews';
 import { useMemo } from 'react';
+
+import { Menu } from '../Menu/Menu';
 import { NewReviewForm } from '../NewReviewForm/NewReviewForm';
+import { Reviews } from '../Reviews/Reviews';
 import { Rating } from '../Rating/Rating';
+
+import styles from './styles.module.css';
 
 export const Restaurant = ({ restaurant }) => {
   const { reviews, menu, name } = restaurant;
@@ -29,12 +32,17 @@ export const Restaurant = ({ restaurant }) => {
   // );
 
   return (
-    <div>
-      <h1>{name}</h1>
+    <div className={styles.root}>
+      <h1 className={styles.title}>{name}</h1>
+
       <div>{rating}</div>
+
       <Rating />
+
       <Menu menu={menu} />
+
       <Reviews reviews={reviews} />
+      
       <NewReviewForm />
     </div>
   );

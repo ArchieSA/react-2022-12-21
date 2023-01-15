@@ -1,5 +1,3 @@
-import classnames from 'classnames';
-
 import { useCount } from '../../hooks/useCount';
 
 import { Button } from '../Button/Button';
@@ -21,15 +19,14 @@ export const Dish = ({ dish }) => {
   const { name, ingredients } = dish;
 
   return (
-    <div
-      className={classnames(styles.root, {
-        [styles.rootBig]: count > 4,
-      })}
-    >
-      {name}
-      <div>
+    <div className={styles.root}>
+      <h4 className={styles.title}>{name}</h4>
+
+      <div className={styles.count_wrapper}>
         <Button onClick={decrement}>-</Button>
-        {count}
+
+        <span className={styles.count}>{count}</span>
+
         <Button onClick={increment}>+</Button>
       </div>
       {count > 0 && ingredients?.length > 0 && (

@@ -1,24 +1,35 @@
 .root {
-    border-radius: 4px;
+  border-radius: 4px;
+  cursor: pointer;
 }
-
 
 .s {
-    font-size: 14px;
+  font-size: 14px;
 }
 .m {
-    font-size: 16px;
+  font-size: 16px;
 }
 .l {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .prime {
-    background-color: white;
-    border: 1px solid black;
+  border: none;
+  background-color: white;
 }
 .second {
-    background-color: dimgrey;
-    border: 1px solid green;
-    color: white;
+  border: none;
+  background-color: #2980b9;
+  color: white;
+}
+.navigation {
+  border: none;
+  background-color: inherit;
+  color: var(--color-text-main);
+}
+.navigation_active {
+  border: none;
+  background-color: inherit;
+  color: var(--color-title);
+  text-decoration: underline;
 }

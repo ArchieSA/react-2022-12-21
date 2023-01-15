@@ -1,0 +1,10 @@
+.root {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.title {
+  color: var(--color-title);
+}

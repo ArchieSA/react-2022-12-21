@@ -1,9 +1,10 @@
 import { Ingredient } from '../Ingredient/Ingredient';
 
+import styles from './styles.module.css';
+
 export const Ingredients = ({ ingredients }) => {
-  console.log(ingredients);
   return (
-    <div>
+    <div className={styles.root}>
       {ingredients.map((ingredient, index) => (
         <Ingredient key={`${ingredient}_${index}`} name={ingredient} />
       ))}

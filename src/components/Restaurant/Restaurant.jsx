@@ -31,8 +31,7 @@ export const Restaurant = ({ restaurant }) => {
   return (
     <div>
       <h1>{name}</h1>
-      <div>{rating}</div>
-      <Rating />
+      <Rating value={rating} />
       <Menu menu={menu} />
       <Reviews reviews={reviews} />
       <NewReviewForm />

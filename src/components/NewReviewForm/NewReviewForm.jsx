@@ -1,4 +1,6 @@
 import { useReducer } from 'react';
+import { Rating } from '../Rating/Rating';
+import { Size } from '../../constants/ui';
 
 const DEFAULT_FORM_VALUE = {
   name: '',
@@ -70,12 +72,13 @@ export const NewReviewForm = ({}) => {
       </div>
       <div>
         <label>Rating</label>
-        <input
+        <Rating
+          size={Size.m}
           value={formValue.rating}
-          onChange={(event) =>
+          onChange={(rating) =>
             dispatch({
               type: FORM_ACTIONS.changeRating,
-              payload: Number(event.target.value),
+              payload: Number(rating),
             })
           }
           type="number"

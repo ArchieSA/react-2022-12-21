@@ -7,6 +7,7 @@ export const Tabs = ({ items, onTabClick, activeIndex }) => {
     <div>
       {items.map((item, index) => (
         <Tab
+          key={`${item}_${index}`}
           title={item}
           onClick={() => onTabClick(index)}
           isActive={index === activeIndex}

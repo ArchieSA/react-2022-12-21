@@ -1,13 +1,12 @@
-
 import { Button } from '../Button/Button';
 import { useCount } from '../../hooks/useCount';
 
-const MAX_INGREDIENT_COUNT = 3;
+import { MAX_INGREDIENT_AMOUNT } from '../../constants/order-details';
 
 export const Ingredient = ({ name }) => {
   const { count, increment, decrement } = useCount({
     defaultValue: 1,
-    max: MAX_INGREDIENT_COUNT,
+    max: MAX_INGREDIENT_AMOUNT,
   });
 
   return (

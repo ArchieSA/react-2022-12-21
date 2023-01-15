@@ -1,6 +1,8 @@
-import styles from './styles.module.css';
 import classnames from 'classnames';
+
 import { Size } from '../../constants/ui';
+
+import styles from './styles.module.css';
 
 export const ButtonViewVariant = {
   prime: 'prime',

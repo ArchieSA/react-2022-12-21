@@ -1,6 +1,8 @@
-import { restaurants } from './constants/fixtures';
-import { Restaurant } from './components/Restaurant/Restaurant';
 import React, { useState } from 'react';
+
+import { restaurants } from './constants/fixtures';
+
+import { Restaurant } from './components/Restaurant/Restaurant';
 import { Tabs } from './components/Tabs/Tabs';
 
 export const App = () => {

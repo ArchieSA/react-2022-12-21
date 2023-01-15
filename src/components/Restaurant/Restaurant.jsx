@@ -1,6 +1,6 @@
 import { Menu } from '../Menu/Menu';
 import { Reviews } from '../Reviews/Reviews';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { NewReviewForm } from '../NewReviewForm/NewReviewForm';
 import { Rating } from '../Rating/Rating';
 

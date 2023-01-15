@@ -72,7 +72,7 @@ export const NewReviewForm = (props) => {
       <div className={styles.field}>
         <label className={styles.label}>Rating</label>
         <RatingButton
-          size={5}
+          size="m"
           value={formValue.rating}
           onChange={(e) => {
             if (e.target.checked) {

@@ -5,7 +5,7 @@ export const Review = ({ review }) => {
   return (
     <div className={styles.root}>
       <div>{`${review.user} - ${review.text}`}</div>
-      <Rating value={review.rating} size={'m'} />
+      <Rating value={review.rating} size={'s'} />
     </div>
   );
 };

@@ -6,10 +6,11 @@ export const RatingButton = ({
   value,
   size = 's',
   ratingSize = 5,
+  className,
 }) => {
   const stars = new Array(ratingSize).fill(0);
   return (
-    <div className={styles.root}>
+    <div className={classnames(styles.root, styles[className])}>
       {stars.map((e, i) => (
         <label
           className={classnames(

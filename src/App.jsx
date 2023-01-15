@@ -4,15 +4,12 @@ import React from 'react';
 import {Tabs} from "./components/Tabs/Tabs";
 
 export const App = () => {
-  const [ active, setActive ] = React.useState(0)
-  const openTab = index => {
-    setActive(index)
-  };
+  const [ activeRestaurantIndex, setActive ] = React.useState(0)
 
   return (
     <div>
-      {<Tabs tabs={restaurants.map(r => r.name)} clickHandler={openTab} />}
-      {<Restaurant restaurant={restaurants[active]} />}
+      {<Tabs tabs={restaurants.map(r => r.name)} onTabSelect={setActive} />}
+      {<Restaurant restaurant={restaurants[activeRestaurantIndex]} />}
     </div>
   );
 };

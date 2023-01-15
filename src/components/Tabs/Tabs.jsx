@@ -1,10 +1,6 @@
 import {Tab} from "../Tab/Tab";
 
-export const Tabs = ({tabs, clickHandler}) => {
-
-    function onClick(i) {
-        clickHandler(i)
-    }
+export const Tabs = ({tabs, onTabSelect }) => {
 
     const tabsStyle = {
         overflow: 'hidden',
@@ -20,7 +16,7 @@ export const Tabs = ({tabs, clickHandler}) => {
     return (
         <div className={'tabs'} style={tabsStyle}>{
             tabs.map((tab, i) => {
-                return <div className={'tab'} key={i} style={tabStyle}><Tab name={tab} clickHandler={onClick} index={i}/></div>
+                return <div className={'tab'} key={i} style={tabStyle}><Tab name={tab} clickHandler={onTabSelect} index={i}/></div>
             })
         }</div>)
 }

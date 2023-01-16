@@ -1,20 +1,25 @@
 import { Button } from '../Button/Button';
 import { useCount } from '../../hooks/useCount';
 
-const MAX_INGREDIENT_COUNT = 3;
+import styles from './styles.module.css';
+
+import { MAX_INGREDIENT_AMOUNT } from '../../constants/order-details';
 
 export const Ingredient = ({ name }) => {
   const { count, increment, decrement } = useCount({
     defaultValue: 1,
-    max: MAX_INGREDIENT_COUNT,
+    max: MAX_INGREDIENT_AMOUNT,
   });
 
   return (
-    <div>
-      {name}
-      <div>
+    <div className={styles.root}>
+      <p className={styles.text}>{name}</p>
+    
+      <div className={styles.count_wrapper}>
         <Button onClick={decrement}>-</Button>
-        {count}
+
+        <span className={styles.count}>{count}</span>
+
         <Button onClick={increment}>+</Button>
       </div>
     </div>

@@ -1,0 +1,17 @@
+.root {
+  color: var(--color-text-main);
+  padding-bottom: 12px;
+}
+
+.text {
+  display: inline-block;
+  margin: 0 15px 0 0;
+}
+
+.count {
+  margin: 0 3px;
+}
+
+.count_wrapper {
+  display: inline-block;
+}

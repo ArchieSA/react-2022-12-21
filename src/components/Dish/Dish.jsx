@@ -1,15 +1,15 @@
+import { useCount } from '../../hooks/useCount';
+
 import { Button } from '../Button/Button';
 import { Ingredients } from '../Ingredients/Ingredients';
-import { useCount } from '../../hooks/useCount';
-import classnames from 'classnames';
+
+import { MAX_DISH_AMOUNT } from '../../constants/order-details';
 
 import styles from './styles.module.css';
 
-const MAX_DISH_COUNT = 6;
-
 export const Dish = ({ dish }) => {
   const { count, increment, decrement } = useCount({
-    max: MAX_DISH_COUNT,
+    max: MAX_DISH_AMOUNT,
   });
 
   if (!dish) {
@@ -19,15 +19,14 @@ export const Dish = ({ dish }) => {
   const { name, ingredients } = dish;
 
   return (
-    <div
-      className={classnames(styles.root, {
-        [styles.rootBig]: count > 4,
-      })}
-    >
-      {name}
-      <div>
+    <div className={styles.root}>
+      <h4 className={styles.title}>{name}</h4>
+
+      <div className={styles.count_wrapper}>
         <Button onClick={decrement}>-</Button>
-        {count}
+
+        <span className={styles.count}>{count}</span>
+
         <Button onClick={increment}>+</Button>
       </div>
       {count > 0 && ingredients?.length > 0 && (

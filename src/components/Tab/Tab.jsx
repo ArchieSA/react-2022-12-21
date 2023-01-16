@@ -8,7 +8,7 @@ export const Tab = ({ title, onClick, isActive, className }) => {
       onClick={onClick}
       size={Size.l}
       viewVariant={
-        isActive ? ButtonViewVariant.prime : ButtonViewVariant.second
+        isActive ? ButtonViewVariant.navigationActive : ButtonViewVariant.navigation
       }
       className={className}
     >

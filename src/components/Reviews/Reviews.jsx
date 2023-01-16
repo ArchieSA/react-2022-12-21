@@ -1,14 +1,18 @@
-import {Review} from "../Review/Review";
+import { Review } from '../Review/Review';
 
-export const Reviews = ({reviews}) => {
-    return <div>
-        <h2>Reviews</h2>
-        <ul>
-            {
-                reviews.map((review) => <li>
-                    <Review review={review}/>
-                </li>)
-            }
-        </ul>
+import styles from './styles.module.css';
+
+export const Reviews = ({ reviews }) => {
+  return (
+    <div>
+      <h2 className={styles.subtitle}>Reviews</h2>
+      <ul className={styles.root}>
+        {reviews.map((review) => (
+          <li key={review.id}>
+            <Review review={review} />
+          </li>
+        ))}
+      </ul>
     </div>
-}
+  );
+};

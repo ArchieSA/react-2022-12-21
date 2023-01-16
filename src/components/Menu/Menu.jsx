@@ -1,12 +1,15 @@
 import { Dish } from '../Dish/Dish';
 
+import styles from './styles.module.css';
+
 export const Menu = ({ menu }) => {
   return (
     <div>
-      <h2>Menu</h2>
-      <ul>
+      <h2 className={styles.subtitle}>Menu</h2>
+
+      <ul className={styles.list}>
         {menu.map((dish) => (
-          <li>
+          <li key={dish.id}>
             <Dish dish={dish} />
           </li>
         ))}

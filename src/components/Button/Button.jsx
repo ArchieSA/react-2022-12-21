@@ -1,10 +1,14 @@
-import styles from './styles.module.css';
 import classnames from 'classnames';
+
 import { Size } from '../../constants/ui';
+
+import styles from './styles.module.css';
 
 export const ButtonViewVariant = {
   prime: 'prime',
   second: 'second',
+  navigation: 'navigation',
+  navigationActive: 'navigation_active',
 };
 
 export const Button = ({

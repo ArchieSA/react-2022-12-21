@@ -1,8 +1,11 @@
+import { useMemo } from 'react';
+
 import { Menu } from '../Menu/Menu';
-import { Reviews } from '../Reviews/Reviews';
-import { useMemo, useState } from 'react';
 import { NewReviewForm } from '../NewReviewForm/NewReviewForm';
+import { Reviews } from '../Reviews/Reviews';
 import { Rating } from '../Rating/Rating';
+
+import styles from './styles.module.css';
 
 export const Restaurant = ({ restaurant }) => {
   const { reviews, menu, name } = restaurant;
@@ -15,26 +18,16 @@ export const Restaurant = ({ restaurant }) => {
     [reviews]
   );
 
-  // const [a] = useState();
-  // const [b] = useState();
-  // const [c] = useState();
-  //
-  // const abc = useMemo(
-  //   () => ({
-  //     a,
-  //     b,
-  //     c,
-  //   }),
-  //   [a, b, c]
-  // );
-
   return (
-    <div>
-      <h1>{name}</h1>
-      <div>{rating}</div>
-      <Rating />
+    <div className={styles.root}>
+      <h1 className={styles.title}>{name}</h1>
+
+      <Rating rating={rating} size={'m'}/>
+
       <Menu menu={menu} />
+
       <Reviews reviews={reviews} />
+      
       <NewReviewForm />
     </div>
   );

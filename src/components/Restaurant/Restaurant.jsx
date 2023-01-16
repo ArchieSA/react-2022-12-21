@@ -18,26 +18,11 @@ export const Restaurant = ({ restaurant }) => {
     [reviews]
   );
 
-  // const [a] = useState();
-  // const [b] = useState();
-  // const [c] = useState();
-  //
-  // const abc = useMemo(
-  //   () => ({
-  //     a,
-  //     b,
-  //     c,
-  //   }),
-  //   [a, b, c]
-  // );
-
   return (
     <div className={styles.root}>
       <h1 className={styles.title}>{name}</h1>
 
-      <div>{rating}</div>
-
-      <Rating />
+      <Rating rating={rating} size={'m'}/>
 
       <Menu menu={menu} />
 

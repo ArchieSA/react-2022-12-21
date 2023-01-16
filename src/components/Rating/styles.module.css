@@ -1,8 +1,31 @@
 .root {
-    background-image: url("./img/star.svg");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
+  display: flex;
+  gap: 2px;
+}
+
+.s, svg {
+  width: 14px;
+  height: 14px;
+}
+
+.m, svg {
+  width: 20px;
+  height: 20px;
+}
+
+.l, svg {
+  width: 28px;
+  height: 28px;
+}
+
+.l, svg:hover:not(.m, .s) {
+  cursor: pointer;
+}
+
+path {
+  fill: var(--color-border);
+}
+
+.yellow path {
+  fill: #f1c40f;
 }

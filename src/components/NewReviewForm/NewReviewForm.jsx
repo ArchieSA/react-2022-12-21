@@ -1,9 +1,14 @@
 import { useReducer } from 'react';
+import classnames from 'classnames';
+
+import { Rating } from '../Rating/Rating';
+
+import styles from './styles.module.css';
 
 const DEFAULT_FORM_VALUE = {
   name: '',
   text: '',
-  rating: 5,
+  rating: 0,
 };
 
 const FORM_ACTIONS = {
@@ -41,10 +46,11 @@ export const NewReviewForm = () => {
   const [formValue, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
 
   return (
-    <div>
-      <div>
-        <label>Name</label>
+    <fieldset className={styles.root}>
+      <label>
+        <span className={styles.label}>Name</span>
         <input
+          className={styles.input}
           value={formValue.name}
           onChange={(event) =>
             dispatch({
@@ -53,10 +59,11 @@ export const NewReviewForm = () => {
             })
           }
         />
-      </div>
-      <div>
-        <label>Text</label>
-        <input
+      </label>
+      <label>
+        <span className={styles.label}>Your review</span>
+        <textarea
+          className={classnames(styles.input, styles.input_text)}
           value={formValue.text}
           onChange={(event) =>
             dispatch({
@@ -65,20 +72,20 @@ export const NewReviewForm = () => {
             })
           }
         />
-      </div>
-      <div>
-        <label>Rating</label>
-        <input
-          value={formValue.rating}
-          onChange={(event) =>
+      </label>
+      <label>
+        <span className={styles.label}>Rating</span>
+        <Rating
+          size={'l'}
+          rating={formValue.rating}
+          onChange={(rate) =>
             dispatch({
               type: FORM_ACTIONS.changeRating,
-              payload: Number(event.target.value),
+              payload: rate,
             })
           }
-          type="number"
         />
-      </div>
-    </div>
+      </label>
+    </fieldset>
   );
 };

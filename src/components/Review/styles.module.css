@@ -1,4 +1,15 @@
 .root {
     display: flex;
     justify-content: space-between;
+
+}
+
+.root div:nth-child(1) {
+    flex: none;
+    width: 400px;
+}
+
+.root div:nth-child(2) {
+    flex: none;
+    width: 200px;
 }

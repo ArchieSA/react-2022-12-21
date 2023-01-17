@@ -84,7 +84,16 @@ export const NewReviewForm = ({}) => {
           type="number"
         />
       </div>
-      <Rating size={Size.m} value={formValue.rating} onChange={dispatch} />
+      <Rating
+        size={Size.m}
+        value={formValue.rating}
+        onChange={(value) =>
+          dispatch({
+            type: FORM_ACTIONS.changeRating,
+            payload: value,
+          })
+        }
+      />
     </div>
   );
 };

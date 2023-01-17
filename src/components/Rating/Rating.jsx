@@ -10,43 +10,21 @@ export const Rating = ({ onChange, value, size, className }) => {
   // return <div className={classnames(styles.root, className)} />;
   // return <img src={Star} loading="lazy" />;
 
-  const stars = Array(NUMBER_OF_STARS)
-    .fill()
-    .map((val, index) => index + 1);
-
-  return stars.map((star) => {
-    return star <= value ? (
-      <img
-        src={GoldStar}
-        loading="lazy"
-        alt="black star"
-        className={classnames(styles.root, styles[size])}
-        onClick={
-          onChange
-            ? () =>
-                onChange({
-                  type: 'changeRating',
-                  payload: Number(star),
-                })
-            : null
-        }
-      />
-    ) : (
-      <img
-        src={Star}
-        loading="lazy"
-        alt="black star"
-        className={classnames(styles.root, styles[size])}
-        onClick={
-          onChange
-            ? () =>
-                onChange({
-                  type: 'changeRating',
-                  payload: Number(star),
-                })
-            : null
-        }
-      />
-    );
-  });
+  return (
+    <div>
+      {NUMBER_OF_STARS > 0 &&
+        new Array(NUMBER_OF_STARS)
+          .fill(null)
+          .map((_, index) => (
+            <img
+              src={index >= value ? Star : GoldStar}
+              key={index}
+              className={classnames(styles.root, styles[size])}
+              loading="lazy"
+              alt="star"
+              onClick={() => onChange?.(index + 1)}
+            />
+          ))}
+    </div>
+  );
 };

@@ -23,13 +23,12 @@ export const Restaurant = ({ restaurantId }) => {
   if (!restaurant) {
     return null;
   }
-
   return (
     <div>
       <h1>{restaurant.name}</h1>
       {/*<Rating value={rating} size={Size.l} />*/}
       <Menu restaurantId={restaurantId} />
-      {/*<Reviews reviews={reviews} />*/}
+      <Reviews restaurantId={restaurantId} />
     </div>
   );
 };

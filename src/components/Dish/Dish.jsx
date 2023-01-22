@@ -4,14 +4,12 @@ import classnames from 'classnames';
 import styles from './styles.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addDish, removeDish } from '../../store/modules/cart/actions';
-import { selectDishCountByName } from '../../store/modules/cart/selectors';
+import { selectDishCountById } from '../../store/modules/cart/selectors';
 import { selectDishById } from '../../store/modules/dish/selectors';
 
 export const Dish = ({ dishId }) => {
-  const dish = useSelector((state) => selectDishById(state, { dishId }));
-  const count = useSelector((state) =>
-    selectDishCountByName(state, { dishId })
-  );
+  const dish = useSelector(selectDishById(dishId));
+  const count = useSelector(selectDishCountById(dishId));
   const dispatch = useDispatch();
 
   if (!dish) {

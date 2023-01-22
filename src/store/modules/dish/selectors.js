@@ -1,4 +1,4 @@
 export const selectDishModule = (state) => state.dish;
 
-export const selectDishById = (state, { dishId }) =>
+export const selectDishById = (dishId) => (state) =>
   selectDishModule(state).entities[dishId];

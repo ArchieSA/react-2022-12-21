@@ -10,7 +10,7 @@ const rootReducer = (state = {}, action) => {
     cart: cartReducer(state.cart, action),
     restaurant: restaurantReducer(state.restaurant, action),
     dish: dishReducer(state.dish, action),
-    review: reviewReducer(state.dish, action),
+    review: reviewReducer(state.review, action),
     user: userReducer(state.user, action),
   };
 

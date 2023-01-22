@@ -7,6 +7,10 @@ export const Menu = ({ restaurantId }) => {
     selectRestaurantMenuById(state, { restaurantId })
   );
 
+  if (!dishIds) {
+    return null;
+  }
+
   return (
     <div>
       <h2>Menu</h2>

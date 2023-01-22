@@ -1,8 +1,22 @@
-.root {
-    background-image: url("./img/star.svg");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
+.star {
+    height: 32px;
+}
+
+.l {
+    width: 48px;
+    height: 48px;
+}
+
+.m {
+    width: 32px;
+    height: 32px;
+}
+
+.s {
+    width: 18px;
+    height: 18px;
+}
+
+.star:not(:last-child) {
+    margin-right: 5px;
 }

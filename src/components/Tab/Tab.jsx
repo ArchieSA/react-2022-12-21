@@ -1,8 +1,18 @@
 import { Button, ButtonViewVariant } from '../Button/Button';
 
 import { Size } from '../../constants/ui';
+import { useSelector } from 'react-redux';
+import { selectRestaurantById } from '../../store/modules/restaurant/selectors';
 
-export const Tab = ({ title, onClick, isActive, className }) => {
+export const Tab = ({ restaurantId, onClick, isActive, className }) => {
+  const restaurant = useSelector((state) =>
+    selectRestaurantById(state, { restaurantId })
+  );
+
+  if (!restaurant) {
+    return null;
+  }
+
   return (
     <Button
       onClick={onClick}
@@ -12,7 +22,7 @@ export const Tab = ({ title, onClick, isActive, className }) => {
       }
       className={className}
     >
-      {title}
+      {restaurant.name}
     </Button>
   );
 };

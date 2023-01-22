@@ -1,12 +1,23 @@
-import { restaurants } from './constants/fixtures';
+import React, { useState } from 'react';
+import { Tabs } from './components/Tabs/Tabs';
+import { store } from './store';
+import { Cart } from './components/Cart/Cart';
+import { Provider } from 'react-redux';
 import { Restaurant } from './components/Restaurant/Restaurant';
-import React from 'react';
 
 export const App = () => {
+  const [activeRestaurantId, setActiveRestaurantId] = useState();
+
   return (
-    <div>
-      {/*<Tabs />*/}
-      {/*<Restaurant restaurant={activeRestaurant} />*/}
-    </div>
+    <Provider store={store}>
+      <div>
+        <Tabs
+          onTabClick={setActiveRestaurantId}
+          activeId={activeRestaurantId}
+        />
+        {activeRestaurantId && <Restaurant restaurantId={activeRestaurantId} />}
+        <Cart />
+      </div>
+    </Provider>
   );
 };

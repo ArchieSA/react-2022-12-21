@@ -1,31 +1,40 @@
 import { Button } from '../Button/Button';
-import { Ingredients } from '../Ingredients/Ingredients';
-import { useCount } from '../../hooks/useCount';
+import classnames from 'classnames';
 
-const MAX_DISH_COUNT = 6;
+import styles from './styles.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { addDish, removeDish } from '../../store/modules/cart/actions';
+import { selectDishCountByName } from '../../store/modules/cart/selectors';
+import { selectDishById } from '../../store/modules/dish/selectors';
 
-export const Dish = ({ dish }) => {
-  const { count, increment, decrement } = useCount({
-    max: MAX_DISH_COUNT,
-  });
+export const Dish = ({ dishId }) => {
+  const dish = useSelector((state) => selectDishById(state, { dishId }));
+  const count = useSelector((state) =>
+    selectDishCountByName(state, { dishId })
+  );
+  const dispatch = useDispatch();
 
   if (!dish) {
     return null;
   }
 
-  const { name, ingredients } = dish;
+  const decrement = () => dispatch(removeDish(dishId));
+  const increment = () => dispatch(addDish(dishId));
+
+  const { name } = dish;
 
   return (
-    <div>
+    <div
+      className={classnames(styles.root, {
+        [styles.rootBig]: count > 4,
+      })}
+    >
       {name}
       <div>
         <Button onClick={decrement}>-</Button>
         {count}
         <Button onClick={increment}>+</Button>
       </div>
-      {count > 0 && ingredients?.length > 0 && (
-        <Ingredients ingredients={ingredients} />
-      )}
     </div>
   );
 };

@@ -14,7 +14,7 @@ export const Cart = () => {
       {dishIds.length > 0 ? (
         <div>
           {dishIds.map((dishId) => (
-            <Dish dishId={dishId} />
+            <Dish key={dishId} dishId={dishId} />
           ))}
           <button onClick={() => dispatch(clearCart())}>Clear</button>
         </div>

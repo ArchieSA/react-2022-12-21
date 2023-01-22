@@ -11,6 +11,7 @@ export const Tabs = ({ onTabClick, activeId }) => {
     <div>
       {restaurantIds.map((id) => (
         <Tab
+          key={id}
           restaurantId={id}
           onClick={() => onTabClick(id)}
           isActive={id === activeId}

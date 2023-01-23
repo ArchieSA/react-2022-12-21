@@ -16,20 +16,20 @@ export const Menu = ({ restaurantId }) => {
     dispatch(loadDishes(restaurantId));
   }, [restaurantId]);
 
-  if (isLoading) {
-    return <span>Loading...</span>;
-  }
-
   return (
     <div>
       <h2>Menu</h2>
-      <ul>
-        {dishIds.map((id) => (
-          <li>
-            <Dish dishId={id} />
-          </li>
-        ))}
-      </ul>
+      {isLoading ? (
+        <span>Loading menu ...</span>
+      ) : (
+        <ul>
+          {dishIds.map((id) => (
+            <li>
+              <Dish dishId={id} />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

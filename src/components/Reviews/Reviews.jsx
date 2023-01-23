@@ -14,11 +14,9 @@ export const Reviews = ({ restaurantId }) => {
   const isLoading = useSelector(selectIsReviewLoading);
 
   useEffect(() => {
+    dispatch(loadUsers());
     dispatch(loadReviews(restaurantId));
   }, [restaurantId]);
-  useEffect(() => {
-    dispatch(loadUsers());
-  }, []);
 
   return (
     <div>

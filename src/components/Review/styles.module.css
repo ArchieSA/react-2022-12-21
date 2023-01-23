@@ -1,2 +1,12 @@
 .root {
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  
+  grid-template-columns: 120px 6fr;
+  /*grid-template-rows: repeat(1, [row] 1fr);
+  border-style: dashed;*/
+  grid-gap: 10px
 }

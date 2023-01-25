@@ -6,7 +6,7 @@ const defaultState = {
     return acc;
   }, {}),
   ids: normalizedUsers.map((id) => id),
-};
+
 
 export const userReducer = (state = defaultState, action) => {
   return state;

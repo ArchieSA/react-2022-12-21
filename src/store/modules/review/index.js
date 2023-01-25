@@ -6,7 +6,6 @@ const defaultState = {
     return acc;
   }, {}),
   ids: normalizedReviews.map((id) => id),
-};
 
 export const reviewReducer = (state = defaultState, action) => {
   return state;

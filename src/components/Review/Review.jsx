@@ -8,6 +8,10 @@ import { User } from '../User/User';
 export const Review = ({ reviewId }) => {
   const review = useSelector((state) => selectReviewById(state, { reviewId }));
 
+  if (!review) {
+    return null;
+  }
+
   const { text, rating, userId } = review;
 
   return (

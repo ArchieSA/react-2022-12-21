@@ -25,7 +25,7 @@ export const Restaurant = ({ restaurantId }) => {
       <h1>{restaurant.name}</h1>
       {/*<Rating value={rating} size={Size.l} />*/}
       <Menu restaurantId={restaurantId} />
-      *<Reviews restaurantId={restaurantId} />
+      <Reviews restaurantId={restaurantId} />
     </div>
   );
 };

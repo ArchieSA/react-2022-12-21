@@ -1,13 +1,18 @@
 import styles from './styles.module.css';
 import { Rating } from '../Rating/Rating';
 import { Size } from '../../constants/ui';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectReviewById } from '../../store/modules/review/selectors';
 import { User } from '../User/User';
+import { useEffect } from 'react';
+import { loadUsers } from '../../store/modules/user/actions';
 
 export const Review = ({ reviewId }) => {
   const review = useSelector((state) => selectReviewById(state, { reviewId }));
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadUsers());
+  });
   if (!review) {
     return null;
   }

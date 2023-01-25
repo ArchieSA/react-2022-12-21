@@ -5,15 +5,18 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadRestaurants } from '../../store/modules/restaurant/actions';
 import { selectIsRestaurantLoading } from '../../store/modules/restaurant/selectors';
+import {loadUsers} from "../../store/modules/user/actions";
+import {selectIsUsersLoading} from "../../store/modules/user/selectors";
 
 
 export const RestaurantsPage = () => {
     const dispatch = useDispatch();
     const [activeRestaurantId, setActiveRestaurantId] = useState();
-    const isLoading = useSelector(selectIsRestaurantLoading);
+    const isLoading = useSelector(selectIsRestaurantLoading || selectIsUsersLoading);
 
     useEffect(() => {
         dispatch(loadRestaurants());
+        dispatch(loadUsers());
     }, []);
 
     if (isLoading) {

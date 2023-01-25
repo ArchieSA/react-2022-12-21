@@ -4,9 +4,11 @@ import { selectUserById } from '../../store/modules/user/selectors';
 export const User = ({ userId }) => {
   const user = useSelector((state) => selectUserById(state, { userId }));
 
-  if (!user) {
-    return null;
-  }
+  const { name } = user;
 
-  return <div>{user.name}</div>;
+  return (
+    <div>
+      <div>{name}</div>
+    </div>
+  );
 };

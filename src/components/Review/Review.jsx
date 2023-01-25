@@ -17,8 +17,8 @@ export const Review = ({ reviewId }) => {
   return (
     <div className={styles.root}>
       <div>{text}</div>
-      <Rating value={rating} size={Size.s} />
       <User userId={userId} />
+      <Rating value={rating} size={Size.s} />
     </div>
   );
 };

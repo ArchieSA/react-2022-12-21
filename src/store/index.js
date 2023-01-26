@@ -7,6 +7,8 @@ import { dishReducer } from './modules/dish';
 import { reviewReducer } from './modules/review';
 import { userReducer } from './modules/user';
 import { logger } from './middleware/logger';
+import { loadReviewsIfNotExist } from './modules/review/middleware/loadReviewsIfNotExist';
+import { loadUsersIfNotExist } from './modules/user/middleware/loadUsersIfNotExist';
 
 const rootReducer = (state = {}, action) => {
   const newState = {
@@ -22,4 +24,13 @@ const rootReducer = (state = {}, action) => {
   return newState;
 };
 
-export const store = createStore(rootReducer, applyMiddleware(logger, loadRestaurantsIfNotExist, loadDishByRestaurantIdIfNotExist));
+export const store = createStore(
+  rootReducer,
+  applyMiddleware(
+    logger,
+    loadRestaurantsIfNotExist,
+    loadDishByRestaurantIdIfNotExist,
+    loadReviewsIfNotExist,
+    loadUsersIfNotExist
+  )
+);

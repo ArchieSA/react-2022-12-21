@@ -1,24 +1,31 @@
-import { CART_ACTIONS } from './actions';
+import { createSlice } from '@reduxjs/toolkit';
+import { LOADING_STATUSES } from '../../constants/loadingStatuses';
 
-export const cartReducer = (state = {}, action) => {
-  console.log('action: ', action);
-  switch (action?.type) {
-    case CART_ACTIONS.add: {
+const initialState = {
+  entities: {},
+  ids: [],
+};
+
+export const cartSlice = createSlice({
+  name: 'cart',
+  initialState,
+  reducers: {
+    add: (state, action) => {
       return {
         ...state,
         [action.payload]: (state[action.payload] || 0) + 1,
       };
-    }
-    case CART_ACTIONS.remove: {
+    },
+    remove: (state, action) => {
       return {
         ...state,
         [action.payload]: (state[action.payload] || 1) - 1,
       };
-    }
-    case CART_ACTIONS.clear: {
+    },
+    clear: () => {
       return {};
-    }
-    default:
-      return state;
-  }
-};
+    },
+  },
+});
+
+export const cartActions = cartSlice.actions;

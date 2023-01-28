@@ -4,8 +4,8 @@ import { Restaurant } from '../../components/Restaurant/Restaurant';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRestaurantLoading } from '../../store/modules/restaurant/selectors';
-import { loadUsers } from '../../store/modules/user/actions';
 import { loadRestaurantsIfNotExist } from '../../store/modules/restaurant/thunks/loadRestaurantsIfNotExist';
+import { loadUsersIfNotExist } from '../../store/modules/user/thunk/loadUsersIfNotExist';
 
 export const RestaurantsPage = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export const RestaurantsPage = () => {
 
   useEffect(() => {
     dispatch(loadRestaurantsIfNotExist);
-    dispatch(loadUsers());
+    dispatch(loadUsersIfNotExist);
   }, []);
 
   if (isLoading) {

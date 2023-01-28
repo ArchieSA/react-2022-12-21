@@ -1,9 +1,9 @@
-const EMPTY_OBJECT = {};
-const EMPTY_ARRAY = [];
+import { cartEntitySelectors } from '.';
 
 export const selectCart = (state) => state.cart;
 
-export const selectCartDishIds = (state) => Object.keys(selectCart(state));
+export const selectCartDishIds = (state) =>
+  cartEntitySelectors.selectIds(selectCart(state));
 
 export const selectDishCountByName = (state, { dishId }) =>
-  selectCart(state)[dishId] || 0;
+  cartEntitySelectors.selectById(selectCart(state), dishId)?.count || 0;

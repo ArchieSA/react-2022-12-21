@@ -1,25 +1,37 @@
-import { applyMiddleware, createStore } from 'redux';
+import { combineReducers } from 'redux';
 import { cartReducer } from './modules/cart';
-import { restaurantReducer } from './modules/restaurant';
-import { loadRestaurantsIfNotExist } from './modules/restaurant/middleware/loadRestaurantsIfNotExist';
-import { loadDishByRestaurantIdIfNotExist } from './modules/dish/middleware/loadDishByRestaurantIdIfNotExist';
-import { dishReducer } from './modules/dish';
+import { restaurantSlice } from './modules/restaurant';
+import { loadUsersIfNotExist } from './modules/user/middleware/loadUsersIfNotExist';
 import { reviewReducer } from './modules/review';
 import { userReducer } from './modules/user';
-import { logger } from './middleware/logger';
+import { loadReviewByRestaurantIdIfNotExist } from './modules/review/middleware/loadReviewsByRestaurantIdIfNotExist';
+import { configureStore } from '@reduxjs/toolkit';
+import { dishSlice } from './modules/dish';
 
-const rootReducer = (state = {}, action) => {
-  const newState = {
-    cart: cartReducer(state.cart, action),
-    restaurant: restaurantReducer(state.restaurant, action),
-    dish: dishReducer(state.dish, action),
-    review: reviewReducer(state.review, action),
-    user: userReducer(state.user, action),
-  };
+const rootReducer = combineReducers({
+  cart: cartReducer,
+  restaurant: restaurantSlice.reducer,
+  dish: dishSlice.reducer,
+  review: reviewReducer,
+  user: userReducer,
+});
 
-  console.log('newState: ', newState);
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat([
+      loadUsersIfNotExist,
+      loadReviewByRestaurantIdIfNotExist,
+    ]),
+});
 
-  return newState;
-};
-
-export const store = createStore(rootReducer, applyMiddleware(logger, loadRestaurantsIfNotExist, loadDishByRestaurantIdIfNotExist));
+// export const store = createStore(
+//   rootReducer,
+//   applyMiddleware(
+//     logger,
+//     loadRestaurantsIfNotExist,
+//     loadDishByRestaurantIdIfNotExist,
+//     loadUsersIfNotExist,
+//     loadReviewByRestaurantIdIfNotExist
+//   )
+// );

@@ -1,9 +1,9 @@
 import { Review } from '../Review/Review';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectRestaurantReviewsById } from '../../store/modules/restaurant/selectors';
-import { loadReviews } from '../../store/modules/review/actions';
 import { useEffect } from 'react';
 import { selectIsReviewLoading } from '../../store/modules/review/selectors';
+import { fetchReviewsByRestaurantId } from '../../store/modules/review/thunk/fetchReviewsByRestaurantId';
 
 export const Reviews = ({ restaurantId }) => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export const Reviews = ({ restaurantId }) => {
   const isLoading = useSelector(selectIsReviewLoading);
 
   useEffect(() => {
-    dispatch(loadReviews(restaurantId));
+    dispatch(fetchReviewsByRestaurantId(restaurantId));
   }, [restaurantId]);
 
   if (isLoading) {

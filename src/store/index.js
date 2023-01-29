@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { cartReducer } from './modules/cart';
+import { cartReducer, cartSlice } from './modules/cart';
 import { restaurantSlice } from './modules/restaurant';
 import { loadUsersIfNotExist } from './modules/user/thunk/loadUsersIfNotExist';
 import { reviewReducer, reviewSlice } from './modules/review';
@@ -9,7 +9,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { dishSlice } from './modules/dish';
 
 const rootReducer = combineReducers({
-  cart: cartReducer,
+  cart: cartSlice.reducer,
   restaurant: restaurantSlice.reducer,
   dish: dishSlice.reducer,
   review: reviewSlice.reducer,

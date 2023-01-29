@@ -1,33 +1,27 @@
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { LOADING_STATUSES } from '../../constants/loadingStatuses';
-import { RESTAURANT_ACTIONS } from './actions';
+import { fetchRestaurants } from './thunk/fetchRestaurants';
 
-const defaultState = {
-  entities: {},
-  ids: [],
-  loadingStatus: LOADING_STATUSES.idle,
-};
+const restaurantEntityAdapter = createEntityAdapter();
 
-export const restaurantReducer = (state = defaultState, action) => {
-  switch (action.type) {
-    case RESTAURANT_ACTIONS.startLoading: {
-      return {
-        ...defaultState,
-        loadingStatus: LOADING_STATUSES.loading,
-      };
-    }
-    case RESTAURANT_ACTIONS.finishLoading: {
-      return {
-        ...action.payload,
-        loadingStatus: LOADING_STATUSES.success
-      };
-    }
-    case RESTAURANT_ACTIONS.failLoading: {
-      return {
-        ...defaultState,
-        loadingStatus: LOADING_STATUSES.failed,
-      };
-    }
-    default:
-      return state;
-  }
-};
+export const restaurantSlice = createSlice({
+  name: 'restaurant',
+  initialState: restaurantEntityAdapter.getInitialState({
+    loadingStatus: LOADING_STATUSES.idle,
+  }),
+  extraReducers: (builder) =>
+    builder
+      .addCase(fetchRestaurants.pending, (state) => {
+        state.loadingStatus = LOADING_STATUSES.loading;
+      })
+      .addCase(fetchRestaurants.fulfilled, (state, { payload }) => {
+        restaurantEntityAdapter.addMany(state, payload);
+        state.loadingStatus = LOADING_STATUSES.success;
+      })
+      .addCase(fetchRestaurants.rejected, (state, { payload }) => {
+        state.loadingStatus =
+          payload === LOADING_STATUSES.earlyAdded
+            ? LOADING_STATUSES.success
+            : LOADING_STATUSES.failed;
+      }),
+});

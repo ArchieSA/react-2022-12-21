@@ -1,15 +1,16 @@
-import { LOADING_STATUSES } from "../../constants/loadingStatuses";
+import { entitySelectors } from '.';
+import { LOADING_STATUSES } from '../../constants/loadingStatuses';
 
 export const selectDishModule = (state) => state.dish;
 
 export const selectDishById = (state, { dishId }) =>
-  selectDishModule(state).entities[dishId];
+  entitySelectors.selectById(selectDishModule(state), dishId);
 
 export const selectDishIds = (state) =>
-  selectDishModule(state).ids;
+  entitySelectors.selectIds(selectDishModule(state));
 
-export const selectDishLoadingStatus =
-  (state) => selectDishModule(state).loadingStatus;
+export const selectDishLoadingStatus = (state) =>
+  selectDishModule(state).loadingStatus;
 
-export const selectIsDishLoading =
-  (state) => selectDishLoadingStatus(state) === LOADING_STATUSES.loading;
+export const selectIsDishLoading = (state) =>
+  selectDishLoadingStatus(state) === LOADING_STATUSES.loading;

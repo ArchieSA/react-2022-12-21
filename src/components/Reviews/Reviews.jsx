@@ -4,6 +4,7 @@ import { selectRestaurantReviewsById } from '../../store/modules/restaurant/sele
 import { loadReviews } from '../../store/modules/review/actions';
 import { useEffect } from 'react';
 import { selectIsReviewLoading } from '../../store/modules/review/selectors';
+import { fetchReviews } from '../../store/modules/review/thunk/fetchReviews';
 
 export const Reviews = ({ restaurantId }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,8 @@ export const Reviews = ({ restaurantId }) => {
   const isLoading = useSelector(selectIsReviewLoading);
 
   useEffect(() => {
-    dispatch(loadReviews(restaurantId));
+    // dispatch(loadReviews(restaurantId));
+    dispatch(fetchReviews())
   }, [restaurantId]);
 
   if (isLoading) {

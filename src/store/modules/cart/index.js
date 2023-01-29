@@ -1,24 +1,20 @@
-import { CART_ACTIONS } from './actions';
+import { createSlice } from '@reduxjs/toolkit';
 
-export const cartReducer = (state = {}, action) => {
-  console.log('action: ', action);
-  switch (action?.type) {
-    case CART_ACTIONS.add: {
-      return {
-        ...state,
-        [action.payload]: (state[action.payload] || 0) + 1,
-      };
+export const cartSlice = createSlice({
+  name: "cart",
+  initialState: {},
+  reducers: {
+    addDish(state, action) {
+      state[action.payload] = (state[action.payload] || 0 + 1)
+    },
+
+    removeDish(state, action) {
+      state[action.payload] = (state[action.payload] || 1) - 1
+    },
+
+    clearCart(state) {
+      return {}
     }
-    case CART_ACTIONS.remove: {
-      return {
-        ...state,
-        [action.payload]: (state[action.payload] || 1) - 1,
-      };
-    }
-    case CART_ACTIONS.clear: {
-      return {};
-    }
-    default:
-      return state;
   }
-};
+})
+ export const {addDish, removeDish, clearCart}  = cartSlice.actions

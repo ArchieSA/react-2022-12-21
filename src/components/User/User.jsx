@@ -17,5 +17,5 @@ export const User = ({ userId }) => {
     return null;
   }
 
-  return <div>{user.name}</div>;
+  return <div className='user'>{user.name}</div>;
 };

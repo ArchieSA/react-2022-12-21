@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from '../../store/modules/cart/actions';
 import { selectCartDishIds } from '../../store/modules/cart/selectors';
+import { selectIsDishLoading } from '../../store/modules/dish/selectors';
 import { Dish } from '../Dish/Dish';
 
 export const Cart = () => {
@@ -8,6 +9,11 @@ export const Cart = () => {
   const dishIds = useSelector(selectCartDishIds);
   const dispatch = useDispatch();
 
+  const isDishLoading = useSelector(selectIsDishLoading);
+
+  if (isDishLoading) {
+    return null;
+  }
   return (
     <div>
       <h2>Cart</h2>

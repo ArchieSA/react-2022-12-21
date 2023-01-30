@@ -4,6 +4,7 @@ import { Restaurant } from '../../components/Restaurant/Restaurant';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadRestaurants } from '../../store/modules/restaurant/actions';
+import { loadUsers } from '../../store/modules/user/actions';
 import { selectIsRestaurantLoading } from '../../store/modules/restaurant/selectors';
 
 
@@ -14,6 +15,7 @@ export const RestaurantsPage = () => {
 
     useEffect(() => {
         dispatch(loadRestaurants());
+        dispatch(loadUsers());
     }, []);
 
     if (isLoading) {

@@ -3,9 +3,9 @@ import classnames from 'classnames';
 
 import styles from './styles.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDish, removeDish } from '../../store/modules/cart/actions';
 import { selectDishCountByName } from '../../store/modules/cart/selectors';
 import { selectDishById } from '../../store/modules/dish/selectors';
+import { addDish, removeDish } from '../../store/modules/cart';
 
 export const Dish = ({ dishId }) => {
   const dish = useSelector((state) => selectDishById(state, { dishId }));

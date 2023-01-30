@@ -1,16 +1,17 @@
+
 import { Button } from '../Button/Button';
 import classnames from 'classnames';
 
 import styles from './styles.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDish, removeDish } from '../../store/modules/cart/actions';
-import { selectDishCountByName } from '../../store/modules/cart/selectors';
+import { cartSlice } from '../../store/modules/cart';
+import { selectDishCountById } from '../../store/modules/cart/selectors';
 import { selectDishById } from '../../store/modules/dish/selectors';
 
 export const Dish = ({ dishId }) => {
   const dish = useSelector((state) => selectDishById(state, { dishId }));
   const count = useSelector((state) =>
-    selectDishCountByName(state, { dishId })
+    selectDishCountById(state, { dishId })
   );
   const dispatch = useDispatch();
 
@@ -18,8 +19,8 @@ export const Dish = ({ dishId }) => {
     return null;
   }
 
-  const decrement = () => dispatch(removeDish(dishId));
-  const increment = () => dispatch(addDish(dishId));
+  const decrement = () => dispatch(cartSlice.actions.remove(dishId));
+  const increment = () => dispatch(cartSlice.actions.add(dishId));
 
   const { name } = dish;
 

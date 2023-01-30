@@ -1,8 +1,12 @@
-import styles from './styles.module.css';
-import { Rating } from '../Rating/Rating';
-import { Size } from '../../constants/ui';
+
 import { useSelector } from 'react-redux';
+
+import styles from './styles.module.css';
+import { Size } from '../../constants/ui';
+
 import { selectReviewById } from '../../store/modules/review/selectors';
+
+import { Rating } from '../Rating/Rating';
 import { User } from '../User/User';
 
 export const Review = ({ reviewId }) => {

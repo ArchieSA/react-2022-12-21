@@ -3,6 +3,8 @@ import { cartReducer } from './modules/cart';
 import { restaurantReducer } from './modules/restaurant';
 import { loadRestaurantsIfNotExist } from './modules/restaurant/middleware/loadRestaurantsIfNotExist';
 import { loadDishByRestaurantIdIfNotExist } from './modules/dish/middleware/loadDishByRestaurantIdIfNotExist';
+import { loadReviewByRestaurantIdIfNotExist } from './modules/review/middleware/loadReviewByRestaurantIdIfNotExist';
+import { loadUsersIfNotExist } from './modules/user/middleware/loadUsersIfNotExist';
 import { dishReducer } from './modules/dish';
 import { reviewReducer } from './modules/review';
 import { userReducer } from './modules/user';
@@ -22,4 +24,6 @@ const rootReducer = (state = {}, action) => {
   return newState;
 };
 
-export const store = createStore(rootReducer, applyMiddleware(logger, loadRestaurantsIfNotExist, loadDishByRestaurantIdIfNotExist));
+export const store = createStore(rootReducer, 
+  applyMiddleware(logger, loadRestaurantsIfNotExist, loadDishByRestaurantIdIfNotExist,
+    loadReviewByRestaurantIdIfNotExist, loadUsersIfNotExist));

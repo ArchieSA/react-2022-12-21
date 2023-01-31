@@ -2,31 +2,54 @@ import { Tab } from '../Tab/Tab';
 
 import styles from './styles.module.css';
 import { useSelector } from 'react-redux';
-import { selectRestaurantIdsFilteredByName } from '../../store/modules/restaurant/selectors';
 import { useSearchParams } from 'react-router-dom';
 
-export const Tabs = () => {
+export const Tabs = ({
+  selectorTabIds,
+  selectorTabIdsFieldName,
+  selectorTabId,
+  selectorTabIdFieldName,
+  tabName,
+  fixedTabIds,
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const restaurantIds = useSelector((state) =>
-    selectRestaurantIdsFilteredByName(state, {
-      restaurantName: searchParams.get('restaurantName') || '',
-    })
+  const tabIds = useSelector((state) =>
+    selectorTabIds
+      ? selectorTabIds(state, {
+          [`${selectorTabIdsFieldName}`]:
+            searchParams.get(`${selectorTabIdsFieldName}`) || '',
+        })
+      : {}
   );
 
   return (
     <div className={styles.root}>
-      <input
-        value={searchParams.get('restaurantName') || ''}
-        onChange={(event) =>
-          setSearchParams({ restaurantName: event.target.value || '' })
-        }
-        className={styles.searchInput}
-        placeholder="Search..."
-      />
+      {selectorTabIds ? (
+        <input
+          value={searchParams.get(`${selectorTabIdsFieldName}`) || ''}
+          onChange={(event) =>
+            setSearchParams({
+              [`${selectorTabIdsFieldName}`]: event.target.value || '',
+            })
+          }
+          className={styles.searchInput}
+          placeholder="Search..."
+        />
+      ) : null}
       <div>
-        {restaurantIds.map((id) => (
-          <Tab restaurantId={id} className={styles.tab} />
-        ))}
+        {selectorTabIds
+          ? tabIds.map((id) => (
+              <Tab
+                tabPath={id}
+                selectorTabId={selectorTabId}
+                selectorTabIdObj={{ [`${selectorTabIdFieldName}`]: id }}
+                tabName={tabName}
+                className={styles.tab}
+              />
+            ))
+          : fixedTabIds.map(({ tabPath, tabName }) => (
+              <Tab tabPath={tabPath} tabName={tabName} className={styles.tab} />
+            ))}
       </div>
     </div>
   );

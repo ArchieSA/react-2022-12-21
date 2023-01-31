@@ -8,14 +8,15 @@ import { useEffect } from 'react';
 import { selectIsDishLoading } from '../../store/modules/dish/selectors';
 import { fetchDishByRestaurantId } from '../../store/modules/dish/thunks/fetchDishByRestaurantId';
 import { Button } from '../Button/Button';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { getAlternativeSort } from './utils';
 import { sortDirections } from '../../constants/sortDirections';
 
 const sortSearchParamName = 'sort';
 const defaultSort = { [sortSearchParamName]: sortDirections.asc };
 
-export const Menu = ({ restaurantId }) => {
+export const Menu = () => {
+  const { restaurantId } = useParams();
   const [searchParams, setSearchParams] = useSearchParams(defaultSort);
   const dispatch = useDispatch();
   const currentSort = searchParams.get(sortSearchParamName);

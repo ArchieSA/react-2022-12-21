@@ -1,0 +1,13 @@
+.root {
+  color: black;
+  text-decoration: none;
+}
+
+.root:hover {
+  color: grey;
+}
+
+.root.isActive {
+  color: grey;
+  cursor: default;
+}

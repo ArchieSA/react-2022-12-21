@@ -1,4 +1,4 @@
-import { createAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { LOADING_STATUSES } from '../../constants/loadingStatuses';
 
 const initialState = {
@@ -23,5 +23,4 @@ export const userSlice = createSlice({
 
 export const userActions = {
   ...userSlice.actions,
-  load: createAction(`${userSlice.name}/load`),
 }

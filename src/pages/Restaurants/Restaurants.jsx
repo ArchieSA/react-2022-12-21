@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRestaurantLoading } from '../../store/modules/restaurant/selectors';
 import { fetchRestaurants } from '../../store/modules/restaurant/thunk/fetchRestaurants';
-import { userActions } from '../../store/modules/user';
+import { loadUsersIfNotExist } from '../../store/modules/user/thunks/loadUsersIfNotExist';
 
 export const RestaurantsPage = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export const RestaurantsPage = () => {
 
   useEffect(() => {
     dispatch(fetchRestaurants());
-    dispatch(userActions.load());
+    dispatch(loadUsersIfNotExist);
   }, []);
 
   if (isLoading) {

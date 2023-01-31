@@ -1,33 +1,27 @@
-import { USER_ACTIONS } from './actions';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { LOADING_STATUSES } from '../../constants/loadingStatuses';
+import { fetchUserByRestaurantId } from './thunk/fetchUserByRestaurantId';
 
-const defaultState = {
-  entities: {},
-  ids: [],
-  loadingStatus: LOADING_STATUSES.idle
-};
+export const userEntityAdapter = createEntityAdapter();
 
-export const userReducer = (state = defaultState, action) => {
-  switch (action.type) {
-    case USER_ACTIONS.startLoading: {
-      return {
-        ...defaultState,
-        loadingStatus: LOADING_STATUSES.loading,
-      };
-    }
-    case USER_ACTIONS.finishLoading: {
-      return {
-        ...action.payload,
-        loadingStatus: LOADING_STATUSES.success
-      };
-    }
-    case USER_ACTIONS.failLoading: {
-      return {
-        ...defaultState,
-        loadingStatus: LOADING_STATUSES.failed,
-      };
-    }
-    default:
-      return state;
-  }
-};
+export const userSlice = createSlice({
+  name: 'user',
+  initialState: userEntityAdapter.getInitialState({
+    loadingStatus: LOADING_STATUSES.idle,
+  }),
+  extraReducers: (build) =>
+    build
+      .addCase(fetchUserByRestaurantId.pending, (state) => {
+        state.loadingStatus = LOADING_STATUSES.loading;
+      })
+      .addCase(fetchUserByRestaurantId.fulfilled, (state, { payload }) => {
+        userEntityAdapter.addMany(state, payload);
+        state.loadingStatus = LOADING_STATUSES.success;
+      })
+      .addCase(fetchUserByRestaurantId.rejected, (state, { payload }) => {
+        state.loadingStatus =
+          payload === LOADING_STATUSES.earlyAdded
+            ? LOADING_STATUSES.success
+            : LOADING_STATUSES.failed;
+      }),
+});

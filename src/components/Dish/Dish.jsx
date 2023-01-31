@@ -3,9 +3,9 @@ import classnames from 'classnames';
 
 import styles from './styles.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDish, removeDish } from '../../store/modules/cart/actions';
 import { selectDishCountByName } from '../../store/modules/cart/selectors';
 import { selectDishById } from '../../store/modules/dish/selectors';
+import { cartActions } from '../../store/modules/cart/index';
 
 export const Dish = ({ dishId }) => {
   const dish = useSelector((state) => selectDishById(state, { dishId }));
@@ -18,8 +18,8 @@ export const Dish = ({ dishId }) => {
     return null;
   }
 
-  const decrement = () => dispatch(removeDish(dishId));
-  const increment = () => dispatch(addDish(dishId));
+  const decrement = () => dispatch(cartActions.remove(dishId));
+  const increment = () => dispatch(cartActions.add(dishId));
 
   const { name } = dish;
 

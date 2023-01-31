@@ -4,8 +4,8 @@ import { Restaurant } from '../../components/Restaurant/Restaurant';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRestaurantLoading } from '../../store/modules/restaurant/selectors';
-import { loadUsers } from '../../store/modules/user/actions';
 import { fetchRestaurants } from '../../store/modules/restaurant/thunk/fetchRestaurants';
+import { fetchUserByRestaurantId } from '../../store/modules/user/thunk/fetchUserByRestaurantId';
 
 export const RestaurantsPage = () => {
   const dispatch = useDispatch();
@@ -13,8 +13,8 @@ export const RestaurantsPage = () => {
   const isLoading = useSelector(selectIsRestaurantLoading);
 
   useEffect(() => {
+    dispatch(fetchUserByRestaurantId());
     dispatch(fetchRestaurants());
-    dispatch(loadUsers());
   }, []);
 
   if (isLoading) {

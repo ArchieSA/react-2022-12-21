@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+
+.searchInput {
+  margin-bottom: 14px;
+}
+
+.tab {
+  margin-bottom: 20px;
+}

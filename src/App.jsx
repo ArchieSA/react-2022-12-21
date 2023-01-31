@@ -8,6 +8,9 @@ import { Home } from './pages/Home/Home';
 import { Cart } from './pages/Cart/Cart';
 import { NotFound } from './pages/NotFound/NotFound';
 import { Restaurant } from './components/Restaurant/Restaurant';
+import { Menu } from './components/Menu/Menu';
+
+import { Reviews } from './components/Reviews/Reviews';
 
 export const App = () => {
   return (
@@ -18,7 +21,10 @@ export const App = () => {
             <Route index element={<Home />} />
             <Route path="restaurants" element={<RestaurantsPage />}>
               <Route index element={<span>choose restaurant</span>} />
-              <Route path=":restaurantId" element={<Restaurant />} />
+              <Route path=":restaurantId" element={<Restaurant />}>
+                <Route index element={<Menu />} />
+                <Route path="review" element={<Reviews />} />
+              </Route>
             </Route>
             <Route path="cart" element={<Cart />} />
             <Route

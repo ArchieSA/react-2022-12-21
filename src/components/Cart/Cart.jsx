@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { clearCart } from '../../store/modules/cart/actions';
+import { cartSlice } from '../../store/modules/cart';
 import { selectCartDishIds } from '../../store/modules/cart/selectors';
 import { Dish } from '../Dish/Dish';
 
@@ -16,7 +16,9 @@ export const Cart = () => {
           {dishIds.map((dishId) => (
             <Dish dishId={dishId} />
           ))}
-          <button onClick={() => dispatch(clearCart())}>Clear</button>
+          <button onClick={() => dispatch(cartSlice.actions.clear())}>
+            Clear
+          </button>
         </div>
       ) : (
         <span>Empty</span>

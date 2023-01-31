@@ -1,19 +1,15 @@
 import { normalizer } from '../../../utils/normalizer';
 import { selectRestaurantReviewsById } from '../../restaurant/selectors';
-import {
-  REVIEW_ACTIONS,
-  failLoadingReviews,
-  finishLoadingReviews,
-  startLoadingReviews,
-} from '../actions';
+import { reviewActions } from '..'
+
 import { selectReviewIds } from '../selectors';
 
 export const loadReviewByRestaurantIdIfNotExist =
   (store) => (next) => (action) => {
-    if (action?.type !== REVIEW_ACTIONS.load) {
+    if (action?.type !== reviewActions.load.type) {
       return next(action);
     }
-
+    
     const restaurantId = action.payload;
     const state = store.getState();
     const restaurantReviewIds = selectRestaurantReviewsById(state, {
@@ -29,11 +25,11 @@ export const loadReviewByRestaurantIdIfNotExist =
       return;
     }
 
-    store.dispatch(startLoadingReviews());
+    store.dispatch(reviewActions.startLoading());
     fetch(`http://localhost:3001/api/reviews?restaurantId=${restaurantId}`)
       .then((response) => response.json())
       .then((reviews) => {
-        store.dispatch(finishLoadingReviews(normalizer(reviews)));
+        store.dispatch(reviewActions.finishLoading(normalizer(reviews)));
       })
-      .catch(() => store.dispatch(failLoadingReviews));
+      .catch(() => store.dispatch(reviewActions.failLoading()));
   };

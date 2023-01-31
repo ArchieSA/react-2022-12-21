@@ -1,27 +1,26 @@
-import { failLoadingUsers, USER_ACTIONS, startLoadingUsers } from '../actions';
 import { selectUserIds } from '../selectors';
-import { finishLoadingUsers } from '../actions';
 import { normalizer } from '../../../utils/normalizer';
+import { userActions } from '..';
 
 export const loadUsersIfNotExist = (store) => (next) => (action) => {
-  if (action?.type !== USER_ACTIONS.load) {
+  if (action?.type !== userActions.load.type) {
     return next(action);
   }
-
+  console.log('loadUsersIfNotExist action:', action?.type);
   const state = store.getState();
 
   if (selectUserIds(state)?.length) {
     return;
   }
 
-  store.dispatch(startLoadingUsers());
-  fetch('http://localhost:3001/api/users/')
+  store.dispatch(userActions.startLoading());
+  fetch('http://localhost:3001/api/users')
     .then((response) => response.json())
     .then((users) => {
       console.log(users);
-      store.dispatch(finishLoadingUsers(normalizer(users)));
+      store.dispatch(userActions.finishLoading(normalizer(users)));
     })
     .catch(() => {
-      store.dispatch(failLoadingUsers());
+      store.dispatch(userActions.failLoading());
     });
 };

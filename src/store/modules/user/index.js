@@ -1,33 +1,27 @@
-import { USER_ACTIONS } from './actions';
+import { createAction, createSlice } from '@reduxjs/toolkit';
 import { LOADING_STATUSES } from '../../constants/loadingStatuses';
 
-const defaultState = {
+const initialState = {
   entities: {},
   ids: [],
-  loadingStatus: LOADING_STATUSES.idle
-};
+  loadingStatus: LOADING_STATUSES.idle,
+}
 
-export const userReducer = (state = defaultState, action) => {
-  switch (action.type) {
-    case USER_ACTIONS.startLoading: {
-      return {
-        ...defaultState,
-        loadingStatus: LOADING_STATUSES.loading,
-      };
-    }
-    case USER_ACTIONS.finishLoading: {
-      return {
-        ...action.payload,
-        loadingStatus: LOADING_STATUSES.success
-      };
-    }
-    case USER_ACTIONS.failLoading: {
-      return {
-        ...defaultState,
-        loadingStatus: LOADING_STATUSES.failed,
-      };
-    }
-    default:
-      return state;
+export const userSlice = createSlice({
+  name: 'user',
+  initialState,
+  reducers: {
+    startLoading: (state) => { state.loadingStatus = LOADING_STATUSES.loading },
+    finishLoading: (state, { payload:{ entities, ids } }) =>{
+      state.entities = entities;
+      state.ids = ids;
+      state.loadingStatus = LOADING_STATUSES.success;
+    },
+    failLoading: (state) => { state.loadingStatus = LOADING_STATUSES.failed }
   }
-};
+});
+
+export const userActions = {
+  ...userSlice.actions,
+  load: createAction(`${userSlice.name}/load`),
+}

@@ -1,10 +1,12 @@
-import { Button, ButtonViewVariant } from '../Button/Button';
-
 import { Size } from '../../constants/ui';
 import { useSelector } from 'react-redux';
 import { selectRestaurantById } from '../../store/modules/restaurant/selectors';
+import { NavLink } from 'react-router-dom';
+import classnames from 'classnames';
 
-export const Tab = ({ restaurantId, onClick, isActive, className }) => {
+import styles from './styles.module.css';
+
+export const Tab = ({ restaurantId, className }) => {
   const restaurant = useSelector((state) =>
     selectRestaurantById(state, { restaurantId })
   );
@@ -14,15 +16,16 @@ export const Tab = ({ restaurantId, onClick, isActive, className }) => {
   }
 
   return (
-    <Button
-      onClick={onClick}
+    <NavLink
+      to={`${restaurantId}`}
       size={Size.l}
-      viewVariant={
-        isActive ? ButtonViewVariant.prime : ButtonViewVariant.second
+      className={({ isActive }) =>
+        classnames(styles.root, className, {
+          [styles.isActive]: isActive,
+        })
       }
-      className={className}
     >
       {restaurant.name}
-    </Button>
+    </NavLink>
   );
 };

@@ -17,7 +17,7 @@ export const dishSlice = createSlice({
         state.loadingStatus = LOADING_STATUSES.loading;
       })
       .addCase(fetchDishByRestaurantId.fulfilled, (state, { payload }) => {
-        dishEntityAdapter.addMany(state, payload);
+        dishEntityAdapter.upsertMany(state, payload);
         state.loadingStatus = LOADING_STATUSES.success;
       })
       .addCase(fetchDishByRestaurantId.rejected, (state, { payload }) => {

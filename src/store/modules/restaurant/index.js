@@ -15,7 +15,7 @@ export const restaurantSlice = createSlice({
         state.loadingStatus = LOADING_STATUSES.loading;
       })
       .addCase(fetchRestaurants.fulfilled, (state, { payload }) => {
-        restaurantEntityAdapter.addMany(state, payload);
+        restaurantEntityAdapter.setAll(state, payload);
         state.loadingStatus = LOADING_STATUSES.success;
       })
       .addCase(fetchRestaurants.rejected, (state, { payload }) => {

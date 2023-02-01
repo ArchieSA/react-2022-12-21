@@ -1,0 +1,16 @@
+.tab {
+  color: black;
+  text-decoration: none;
+}
+
+.tab:hover {
+  color: grey;
+}
+
+.tab.isActive {
+  color: grey;
+  cursor: default;
+}
+.tab:not(:last-child) {
+  margin-right: 30px;
+}

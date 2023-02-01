@@ -4,8 +4,10 @@ import { selectRestaurantReviewsById } from '../../store/modules/restaurant/sele
 import { useEffect } from 'react';
 import { selectIsReviewLoading } from '../../store/modules/review/selectors';
 import { fetchReviewsByRestaurantId } from '../../store/modules/review/thunk/fetchReviewsByRestaurantId';
+import { useParams } from 'react-router-dom';
 
-export const Reviews = ({ restaurantId }) => {
+export const Reviews = () => {
+  const { restaurantId } = useParams();
   const dispatch = useDispatch();
   const reviewIds = useSelector((state) =>
     selectRestaurantReviewsById(state, { restaurantId })

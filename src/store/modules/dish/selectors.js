@@ -11,6 +11,17 @@ export const selectDishById = (state, { dishId }) =>
 export const selectDishIds = (state) =>
   entitySelectors.selectIds(selectDishModule(state));
 
+export const selectDishIdsByDishName = (state, { dishName }) =>
+  Object.values(selectDishModule(state).entities).reduce(
+    (acc, { id, name }) => {
+      if (name.toLowerCase().includes(dishName.toLowerCase())) {
+        acc.push(id);
+      }
+      return acc;
+    },
+    []
+  );
+
 export const selectDishLoadingStatus = (state) =>
   selectDishModule(state).loadingStatus;
 

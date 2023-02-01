@@ -1,5 +1,4 @@
 import { Tabs } from '../../components/Tabs/Tabs';
-import { Restaurant } from '../../components/Restaurant/Restaurant';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRestaurantLoading } from '../../store/modules/restaurant/selectors';

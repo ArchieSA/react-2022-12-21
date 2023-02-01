@@ -1,0 +1,8 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.input {
+  max-width: 150px;
+}

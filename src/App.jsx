@@ -10,6 +10,8 @@ import { NotFound } from './pages/NotFound/NotFound';
 import { Restaurant } from './components/Restaurant/Restaurant';
 import { Menu } from './components/Menu/Menu';
 import { Reviews } from './components/Reviews/Reviews';
+import { Dishes } from './pages/Dishes/Dishes';
+import { DishPage } from './pages/DishPage/DishPage';
 
 export const App = () => {
   return (
@@ -31,6 +33,8 @@ export const App = () => {
               path="closed-page"
               element={<Navigate to="/restaurants" replace />}
             />
+            <Route path="dishes" element={<Dishes />} />
+            <Route path="dish/:dishId" element={<DishPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

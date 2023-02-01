@@ -5,7 +5,6 @@ import { selectRestaurantIds } from '../selectors';
 export const fetchRestaurants = createAsyncThunk(
   `restaurants/fetchRestaurants`,
   async (_, { getState, rejectWithValue }) => {
-    console.log('fetchRestaurants');
     const state = getState();
 
     if (selectRestaurantIds(state)?.length) {

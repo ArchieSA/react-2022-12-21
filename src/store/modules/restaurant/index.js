@@ -8,6 +8,7 @@ export const restaurantSlice = createSlice({
   name: 'restaurant',
   initialState: restaurantEntityAdapter.getInitialState({
     loadingStatus: LOADING_STATUSES.idle,
+    isFullLoaded: false
   }),
   extraReducers: (builder) =>
     builder
@@ -17,6 +18,7 @@ export const restaurantSlice = createSlice({
       .addCase(fetchRestaurants.fulfilled, (state, { payload }) => {
         restaurantEntityAdapter.setAll(state, payload);
         state.loadingStatus = LOADING_STATUSES.success;
+        state.isFullLoaded = true;
       })
       .addCase(fetchRestaurants.rejected, (state, { payload }) => {
         state.loadingStatus =

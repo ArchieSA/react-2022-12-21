@@ -11,6 +11,18 @@ export const selectDishById = (state, { dishId }) =>
 export const selectDishIds = (state) =>
   entitySelectors.selectIds(selectDishModule(state));
 
+
+export const selectDishIdsFilteredByName = (state, { dishName }) =>
+  Object.values(selectDishModule(state).entities).reduce(
+    (acc, { id, name }) => {
+      if (name.toLowerCase().includes(dishName.toLowerCase())) {
+        acc.push(id);
+      }
+      return acc;
+    },
+    []
+  );
+
 export const selectDishLoadingStatus = (state) =>
   selectDishModule(state).loadingStatus;
 
@@ -19,3 +31,6 @@ export const selectIsDishLoading = (state) =>
 
 export const selectIsDishSuccessLoaded = (state) =>
   selectDishLoadingStatus(state) === LOADING_STATUSES.success;
+
+export const selectIsDishFullLoaded = (state) =>
+  selectDishModule(state).isFullLoaded;

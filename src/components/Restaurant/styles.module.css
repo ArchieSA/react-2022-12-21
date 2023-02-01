@@ -1,0 +1,17 @@
+.navlink {
+    color          : black;
+    text-decoration: none;
+}
+
+.navlink+.navlink {
+    margin-left: 20px;
+}
+
+.navlink:hover {
+    color: grey;
+}
+
+.navlink.isActive {
+    color : grey;
+    cursor: default;
+}

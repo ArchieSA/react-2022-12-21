@@ -9,7 +9,6 @@ import { Outlet } from 'react-router-dom';
 
 export const RestaurantsPage = () => {
   const dispatch = useDispatch();
-  const [activeRestaurantId, setActiveRestaurantId] = useState();
   const isLoading = useSelector(selectIsRestaurantLoading);
 
   useEffect(() => {
@@ -23,7 +22,7 @@ export const RestaurantsPage = () => {
 
   return (
     <div>
-      <Tabs onTabClick={setActiveRestaurantId} activeId={activeRestaurantId} />
+      <Tabs />
       {/* {activeRestaurantId && <Restaurant restaurantId={activeRestaurantId} />} */}
       <Outlet />
     </div>

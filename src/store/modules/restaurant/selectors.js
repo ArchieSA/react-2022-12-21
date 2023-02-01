@@ -47,6 +47,16 @@ export const selectRestaurantIdsFilteredByName = (state, { restaurantName }) =>
     []
   );
 
+export const selectRestaurantsByDishId = (state, { dishId }) => {
+  return Object.values(selectRestaurantModule(state).entities).reduce(
+    (acc, restaurant) => {
+      if (restaurant.menu.includes(dishId)) {
+        acc.push(restaurant);
+      }
+      return acc;
+    }, [])
+}
+
 export const selectRestaurantLoadingStatus = (state) =>
   selectRestaurantModule(state).loadingStatus;
 

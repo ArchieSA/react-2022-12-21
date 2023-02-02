@@ -1,0 +1,46 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+
+    padding: 0 20px;
+
+    height: 60px;
+    width: 100%;
+
+    border-bottom: 1px solid black;
+}
+
+.content {
+    margin: 20px 30px;
+}
+
+.footer {
+    height: 60px;
+    width: 100%;
+
+    margin-top: auto;
+    border-top: 1px solid black;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover {
+    color: grey;
+}
+
+.link:first-child {
+    margin-right: auto;
+}
+.link:not(:first-child) {
+    margin-left: 20px;
+}

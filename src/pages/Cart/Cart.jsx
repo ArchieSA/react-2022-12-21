@@ -1,10 +1,10 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Dish } from '../../components/Dish/Dish';
 import { clearCart } from '../../store/modules/cart/actions';
 import { selectCartDishIds } from '../../store/modules/cart/selectors';
-import { Dish } from '../Dish/Dish';
 
 export const Cart = () => {
-  // const dishIds = useSelector(state => selectCartDishIds(state));
   const dishIds = useSelector(selectCartDishIds);
   const dispatch = useDispatch();
 

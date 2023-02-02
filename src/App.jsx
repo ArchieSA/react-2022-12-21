@@ -8,6 +8,10 @@ import { Home } from './pages/Home/Home';
 import { Cart } from './pages/Cart/Cart';
 import { NotFound } from './pages/NotFound/NotFound';
 import { Restaurant } from './components/Restaurant/Restaurant';
+import { Reviews } from './components/Reviews/Reviews';
+import { Menu } from './components/Menu/Menu';
+import { Dishes } from './pages/Dishes/Dishes';
+import { DishPage } from './pages/DishPage/DishPage';
 
 export const App = () => {
   return (
@@ -18,8 +22,13 @@ export const App = () => {
             <Route index element={<Home />} />
             <Route path="restaurants" element={<RestaurantsPage />}>
               <Route index element={<span>choose restaurant</span>} />
-              <Route path=":restaurantId" element={<Restaurant />} />
+              <Route path=":restaurantId" element={<Restaurant />} > 
+                <Route path="menu" element={<Menu />} />
+                <Route path="reviews" element={<Reviews />} />
+              </Route>
             </Route>
+            <Route path="dishes" element={<Dishes />} />
+            <Route path="dish/:dishId" element={<DishPage />} />
             <Route path="cart" element={<Cart />} />
             <Route
               path="closed-page"

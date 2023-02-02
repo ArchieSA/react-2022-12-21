@@ -19,3 +19,17 @@ export const selectIsDishLoading = (state) =>
 
 export const selectIsDishSuccessLoaded = (state) =>
   selectDishLoadingStatus(state) === LOADING_STATUSES.success;
+
+export const selectDishIdsFilteredByName = (state, { dishName }) =>
+  Object.values(selectDishModule(state).entities).reduce(
+    (acc, { id, name }) => {
+      if (name.toLowerCase().includes(dishName.toLowerCase())) {
+        acc.push(id);
+      }
+      return acc;
+    },
+    []
+); 
+
+export const selectIsDishFullLoaded = (state) =>
+  selectDishModule(state).isFullLoaded;

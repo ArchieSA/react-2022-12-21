@@ -2,8 +2,10 @@ import { Menu } from '../Menu/Menu';
 import { Reviews } from '../Reviews/Reviews';
 import { useSelector } from 'react-redux';
 import { selectRestaurantById } from '../../store/modules/restaurant/selectors';
+import { useParams } from 'react-router-dom';
 
-export const Restaurant = ({ restaurantId }) => {
+export const Restaurant = () => {
+  const { restaurantId } = useParams();
   const restaurant = useSelector((state) =>
     selectRestaurantById(state, { restaurantId })
   );

@@ -1,11 +1,11 @@
 import { Tabs } from '../../components/Tabs/Tabs';
-import { Cart } from '../../components/Cart/Cart';
 import { Restaurant } from '../../components/Restaurant/Restaurant';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRestaurantLoading } from '../../store/modules/restaurant/selectors';
-import { loadUsers } from '../../store/modules/user/actions';
 import { fetchRestaurants } from '../../store/modules/restaurant/thunk/fetchRestaurants';
+import { fetchUsers } from '../../store/modules/user/thunk/fetchUsers';
+import { Outlet } from 'react-router-dom';
 
 export const RestaurantsPage = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export const RestaurantsPage = () => {
 
   useEffect(() => {
     dispatch(fetchRestaurants());
-    dispatch(loadUsers());
+    dispatch(fetchUsers());
   }, []);
 
   if (isLoading) {
@@ -24,8 +24,8 @@ export const RestaurantsPage = () => {
   return (
     <div>
       <Tabs onTabClick={setActiveRestaurantId} activeId={activeRestaurantId} />
-      {activeRestaurantId && <Restaurant restaurantId={activeRestaurantId} />}
-      <Cart />
+      {/* {activeRestaurantId && <Restaurant restaurantId={activeRestaurantId} />} */}
+      <Outlet />
     </div>
   );
 };

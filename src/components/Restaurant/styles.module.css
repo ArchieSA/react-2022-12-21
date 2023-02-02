@@ -1,0 +1,14 @@
+.tab {
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 10px;
+    padding: 7px;
+    background-color: #ddd;
+    border-radius: 5px;
+}
+  
+.isActive {
+    color: coral;
+    cursor: default;
+}

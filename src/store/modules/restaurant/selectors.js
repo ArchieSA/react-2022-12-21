@@ -52,3 +52,13 @@ export const selectRestaurantLoadingStatus = (state) =>
 
 export const selectIsRestaurantLoading = (state) =>
   selectRestaurantLoadingStatus(state) === LOADING_STATUSES.loading;
+
+export const selectRestaurantsByDishId = (state, { dishId }) => {
+  return Object.values(selectRestaurantModule(state).entities).reduce(
+    (acc, restaurant) => {
+      if (restaurant.menu.includes(dishId)) {
+        acc.push(restaurant);
+      }
+      return acc;
+    }, [])
+}

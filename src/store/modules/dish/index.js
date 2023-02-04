@@ -1,6 +1,8 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { LOADING_STATUSES } from '../../constants/loadingStatuses';
 import { fetchDishByRestaurantId } from './thunks/fetchDishByRestaurantId';
+import { fetchDishes } from './thunks/fetchDishes';
+import { fetchDishesIfOneNotLoaded } from './thunks/fetchDishesIfOneNotLoaded';
 
 export const dishEntityAdapter = createEntityAdapter();
 
@@ -21,6 +23,32 @@ export const dishSlice = createSlice({
         state.loadingStatus = LOADING_STATUSES.success;
       })
       .addCase(fetchDishByRestaurantId.rejected, (state, { payload }) => {
+        state.loadingStatus =
+          payload === LOADING_STATUSES.earlyAdded
+            ? LOADING_STATUSES.success
+            : LOADING_STATUSES.failed;
+      })
+      .addCase(fetchDishes.pending, (state) => {
+        state.loadingStatus = LOADING_STATUSES.loading;
+      })
+      .addCase(fetchDishes.fulfilled, (state, { payload }) => {
+        dishEntityAdapter.upsertMany(state, payload);
+        state.loadingStatus = LOADING_STATUSES.success;
+      })
+      .addCase(fetchDishes.rejected, (state, { payload }) => {
+        state.loadingStatus =
+          payload === LOADING_STATUSES.earlyAdded
+            ? LOADING_STATUSES.success
+            : LOADING_STATUSES.failed;
+      })
+      .addCase(fetchDishesIfOneNotLoaded.pending, (state) => {
+        state.loadingStatus = LOADING_STATUSES.loading;
+      })
+      .addCase(fetchDishesIfOneNotLoaded.fulfilled, (state, { payload }) => {
+        dishEntityAdapter.upsertMany(state, payload);
+        state.loadingStatus = LOADING_STATUSES.success;
+      })
+      .addCase(fetchDishesIfOneNotLoaded.rejected, (state, { payload }) => {
         state.loadingStatus =
           payload === LOADING_STATUSES.earlyAdded
             ? LOADING_STATUSES.success

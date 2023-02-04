@@ -1,40 +1,58 @@
-import { Button } from '../Button/Button';
-import classnames from 'classnames';
-
-import styles from './styles.module.css';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDish, removeDish } from '../../store/modules/cart/actions';
-import { selectDishCountByName } from '../../store/modules/cart/selectors';
-import { selectDishById } from '../../store/modules/dish/selectors';
+import { Link, useParams } from 'react-router-dom';
+import { Ingredients } from '../Ingredients/Ingredients';
+import {
+  selectDishById,
+  selectIsDishLoading,
+} from '../../store/modules/dish/selectors';
+import {
+  selectIsRestaurantLoading,
+  selectRestaurantIdsByDishId,
+} from '../../store/modules/restaurant/selectors';
+import { fetchRestaurantsIfNotLoaded } from '../../store/modules/restaurant/thunk/fetchRestaurantsIfNotLoaded';
+import { fetchDishesIfOneNotLoaded } from '../../store/modules/dish/thunks/fetchDishesIfOneNotLoaded';
 
-export const Dish = ({ dishId }) => {
-  const dish = useSelector((state) => selectDishById(state, { dishId }));
-  const count = useSelector((state) =>
-    selectDishCountByName(state, { dishId })
-  );
+export const Dish = () => {
+  const { dishId } = useParams();
   const dispatch = useDispatch();
+  const dish = useSelector((state) => selectDishById(state, { dishId }));
+  const restaurantsIdsFilteredWithDishId = useSelector((state) => {
+    return selectRestaurantIdsByDishId(state, { dishId });
+  });
+  const isDishLoading = useSelector(selectIsDishLoading);
+  const isRestaurantsLoading = useSelector(selectIsRestaurantLoading);
+
+  useEffect(() => {
+    dispatch(fetchRestaurantsIfNotLoaded(restaurantsIdsFilteredWithDishId));
+    dispatch(fetchDishesIfOneNotLoaded(dishId));
+  }, []);
+
+  if (isDishLoading) {
+    return <span>Loading...</span>;
+  }
 
   if (!dish) {
     return null;
   }
 
-  const decrement = () => dispatch(removeDish(dishId));
-  const increment = () => dispatch(addDish(dishId));
-
-  const { name } = dish;
-
   return (
-    <div
-      className={classnames(styles.root, {
-        [styles.rootBig]: count > 4,
-      })}
-    >
-      {name}
-      <div>
-        <Button onClick={decrement}>-</Button>
-        {count}
-        <Button onClick={increment}>+</Button>
-      </div>
+    <div>
+      <h2>Dish: {dish.name}</h2>
+      <p>Price: {dish.price}</p>
+      <Ingredients ingredients={dish.ingredients} />
+      {isRestaurantsLoading ? (
+        <span>Loading...</span>
+      ) : (
+        <div>
+          <p>This dish is presented in the following restaurants:</p>
+          {restaurantsIdsFilteredWithDishId.map(({ id, name }) => (
+            <Link key={id} to={`/restaurants/${id}`}>
+              {name}
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

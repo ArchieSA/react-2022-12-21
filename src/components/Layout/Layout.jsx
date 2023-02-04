@@ -16,6 +16,9 @@ export const Layout = ({ children }) => {
         <Link to="/cart" className={styles.link}>
           Cart
         </Link>
+        <Link to="/dishes" className={styles.link}>
+          Dishes
+        </Link>
       </div>
       <div className={styles.content}>{children}</div>
       <div className={styles.footer}>footer</div>

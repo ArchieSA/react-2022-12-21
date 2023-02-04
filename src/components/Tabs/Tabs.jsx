@@ -25,7 +25,7 @@ export const Tabs = () => {
       />
       <div>
         {restaurantIds.map((id) => (
-          <Tab restaurantId={id} className={styles.tab} />
+          <Tab key={id} restaurantId={id} className={styles.tab} />
         ))}
       </div>
     </div>

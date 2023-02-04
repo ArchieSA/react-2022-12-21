@@ -1,6 +1,5 @@
 import { LOADING_STATUSES } from '../../constants/loadingStatuses';
 import {
-  selectDishById,
   selectDishEntities,
   selectIsDishSuccessLoaded,
 } from '../dish/selectors';
@@ -52,3 +51,14 @@ export const selectRestaurantLoadingStatus = (state) =>
 
 export const selectIsRestaurantLoading = (state) =>
   selectRestaurantLoadingStatus(state) === LOADING_STATUSES.loading;
+
+export const selectRestaurantIdsByDishId = (state, { dishId }) =>
+  Object.values(selectRestaurantModule(state).entities).reduce(
+    (acc, { name, menu, id }) => {
+      if (menu.includes(dishId)) {
+        acc.push({ id, name });
+      }
+      return acc;
+    },
+    []
+  );

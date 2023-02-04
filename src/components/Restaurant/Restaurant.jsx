@@ -2,7 +2,10 @@ import { Menu } from '../Menu/Menu';
 import { Reviews } from '../Reviews/Reviews';
 import { useSelector } from 'react-redux';
 import { selectRestaurantById } from '../../store/modules/restaurant/selectors';
-import { useParams } from 'react-router-dom';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { Size } from '../../constants/ui';
+import styles from './styles.module.css';
+import classNames from 'classnames';
 
 export const Restaurant = () => {
   const { restaurantId } = useParams();
@@ -26,8 +29,29 @@ export const Restaurant = () => {
     <div>
       <h1>{restaurant.name}</h1>
       {/*<Rating value={rating} size={Size.l} />*/}
-      <Menu restaurantId={restaurantId} />
-      <Reviews restaurantId={restaurantId} />
+      <NavLink
+        to="menu"
+        size={Size.l}
+        className={({ isActive }) =>
+          classNames(styles.root, {
+            [styles.isActive]: isActive,
+          })
+        }
+      >
+        <p>Menu</p>
+      </NavLink>
+      <NavLink
+        to="reviews"
+        size={Size.l}
+        className={({ isActive }) =>
+          classNames(styles.root, {
+            [styles.isActive]: isActive,
+          })
+        }
+      >
+        <p>Reviews</p>
+      </NavLink>
+      <Outlet />
     </div>
   );
 };

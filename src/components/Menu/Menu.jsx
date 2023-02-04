@@ -1,4 +1,4 @@
-import { Dish } from '../Dish/Dish';
+import { DishWithButtons } from '../DishWithButtons/Dish';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectRestaurantMenuByIdSortedByDishName } from '../../store/modules/restaurant/selectors';
 import { useEffect } from 'react';
@@ -49,8 +49,8 @@ export const Menu = () => {
       </Button>
       <ul>
         {dishIds.map((id) => (
-          <li>
-            <Dish dishId={id} />
+          <li key={id}>
+            <DishWithButtons dishId={id} />
           </li>
         ))}
       </ul>

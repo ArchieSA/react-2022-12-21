@@ -88,3 +88,13 @@ export const createSelectRestaurantRating = () =>
       );
     }
   );
+
+export const selectRestaurantEntitiesValuesAsArray = (state) => {
+  return Object.values(selectRestaurantModule(state).entities);
+};
+
+export const restaurantListContainsCurrentDish = (state, { dishId }) => {
+  return selectRestaurantEntitiesValuesAsArray(state).filter((item) =>
+    item.menu.includes(dishId)
+  );
+};

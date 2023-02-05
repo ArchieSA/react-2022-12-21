@@ -1,0 +1,19 @@
+.tabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: grey;
+}
+
+.link.isActive {
+  color: grey;
+  cursor: default;
+}

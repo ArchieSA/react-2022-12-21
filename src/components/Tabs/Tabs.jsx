@@ -23,9 +23,10 @@ export const Tabs = () => {
         className={styles.searchInput}
         placeholder="Search..."
       />
+      
       <div>
         {restaurantIds.map((id) => (
-          <Tab restaurantId={id} className={styles.tab} />
+          <Tab key={id} restaurantId={id} className={styles.tab} />
         ))}
       </div>
     </div>

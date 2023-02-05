@@ -22,6 +22,7 @@ export const Rating = ({
             <img
               src={index >= value ? Star : GoldStar}
               key={index}
+              alt=""
               className={classnames(styles.star, styles[size])}
               loading="lazy"
               onClick={() => onChange?.(index + 1)}

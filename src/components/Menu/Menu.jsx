@@ -1,21 +1,19 @@
 import { Dish } from '../Dish/Dish';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectRestaurantMenuById,
-  selectRestaurantMenuByIdSortedByDishName,
-} from '../../store/modules/restaurant/selectors';
+import { selectRestaurantMenuByIdSortedByDishName } from '../../store/modules/restaurant/selectors';
 import { useEffect } from 'react';
 import { selectIsDishLoading } from '../../store/modules/dish/selectors';
 import { fetchDishByRestaurantId } from '../../store/modules/dish/thunks/fetchDishByRestaurantId';
 import { Button } from '../Button/Button';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useParams } from 'react-router-dom';
 import { getAlternativeSort } from './utils';
 import { sortDirections } from '../../constants/sortDirections';
 
 const sortSearchParamName = 'sort';
 const defaultSort = { [sortSearchParamName]: sortDirections.asc };
 
-export const Menu = ({ restaurantId }) => {
+export const Menu = () => {
+  const { restaurantId } = useParams();
   const [searchParams, setSearchParams] = useSearchParams(defaultSort);
   const dispatch = useDispatch();
   const currentSort = searchParams.get(sortSearchParamName);
@@ -38,7 +36,6 @@ export const Menu = ({ restaurantId }) => {
 
   return (
     <div>
-      <h2>Menu</h2>
       <Button
         onClick={() =>
           setSearchParams({
@@ -48,13 +45,10 @@ export const Menu = ({ restaurantId }) => {
       >
         Toggle sort (current: {currentSort})
       </Button>
-      <ul>
-        {dishIds.map((id) => (
-          <li>
-            <Dish dishId={id} />
-          </li>
-        ))}
-      </ul>
+
+      {dishIds.map((id) => (
+        <Dish key={id} dishId={id} />
+      ))}
     </div>
   );
 };

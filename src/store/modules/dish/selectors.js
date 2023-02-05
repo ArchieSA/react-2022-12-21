@@ -19,3 +19,9 @@ export const selectIsDishLoading = (state) =>
 
 export const selectIsDishSuccessLoaded = (state) =>
   selectDishLoadingStatus(state) === LOADING_STATUSES.success;
+
+export const selectDishByName = (state, { dishName }) =>
+    Object.values(state.dish.entities).filter(
+        ({ id, name }) =>
+            dishName === '' || name.toLowerCase().includes(dishName.toLowerCase())
+    ) || [];

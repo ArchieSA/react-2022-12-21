@@ -52,3 +52,11 @@ export const selectRestaurantLoadingStatus = (state) =>
 
 export const selectIsRestaurantLoading = (state) =>
   selectRestaurantLoadingStatus(state) === LOADING_STATUSES.loading;
+
+export const selectRestaurantEntitiesFilteredByName = (state,{ restaurantName }) =>
+    Object.values(selectRestaurantModule(state).entities)
+        .filter(({ id, name }) => name.toLowerCase().includes(restaurantName.toLowerCase())) || [];
+
+export const selectRestaurantsByDishId = (state, { dishId }) =>
+    Object.values(selectRestaurantModule(state).entities)
+        .filter((item) => item.menu.includes(dishId)) || [];

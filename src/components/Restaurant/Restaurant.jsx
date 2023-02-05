@@ -1,8 +1,7 @@
-import { Menu } from '../Menu/Menu';
-import { Reviews } from '../Reviews/Reviews';
 import { useSelector } from 'react-redux';
 import { selectRestaurantById } from '../../store/modules/restaurant/selectors';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
+import { Tabs } from '../Tabs/Tabs';
 
 export const Restaurant = () => {
   const { restaurantId } = useParams();
@@ -22,13 +21,16 @@ export const Restaurant = () => {
     return null;
   }
 
+  const tabItems = [];
+  tabItems.push({ path: 'menu', name: 'Menu' });
+  tabItems.push({ path: 'reviews', name: 'Reviews' });
+
   return (
     <div>
       <h1>{restaurant.name}</h1>
       {/*<Rating value={rating} size={Size.l} />*/}
       <div>
-        <NavLink to="menu">Menu</NavLink>
-        <NavLink to="reviews">Reviews</NavLink>
+        <Tabs items={tabItems} />
       </div>
       <Outlet />
     </div>

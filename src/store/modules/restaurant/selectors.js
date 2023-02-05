@@ -47,6 +47,14 @@ export const selectRestaurantIdsFilteredByName = (state, { restaurantName }) =>
     []
   );
 
+export const selectRestaurantEntitiesFilteredByName = (
+  state,
+  { restaurantName }
+) =>
+  Object.values(selectRestaurantModule(state).entities).filter(({ id, name }) =>
+    name.toLowerCase().includes(restaurantName.toLowerCase())
+  ) || [];
+
 export const selectRestaurantLoadingStatus = (state) =>
   selectRestaurantModule(state).loadingStatus;
 

@@ -1,8 +1,12 @@
 .root {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.searchInput {
+    margin-bottom: 14px;
 }
 
 .tab:not(:last-child) {

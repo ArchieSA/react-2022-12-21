@@ -1,8 +1,7 @@
-import { Menu } from '../Menu/Menu';
-import { Reviews } from '../Reviews/Reviews';
 import { useSelector } from 'react-redux';
 import { selectRestaurantById } from '../../store/modules/restaurant/selectors';
-import { useParams } from 'react-router-dom';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
+import styles from './styles.module.css';
 
 export const Restaurant = () => {
   const { restaurantId } = useParams();
@@ -23,11 +22,15 @@ export const Restaurant = () => {
   }
 
   return (
-    <div>
+    <div className={styles.root}>
       <h1>{restaurant.name}</h1>
-      {/*<Rating value={rating} size={Size.l} />*/}
+      <NavLink className={styles.link} to="Menu">Menu</NavLink>
+      <NavLink className={styles.link} to="Reviews">Reviews</NavLink>
+      <Outlet />
+      {/*<Rating value={rating} size={Size.l} />
       <Menu restaurantId={restaurantId} />
-      <Reviews restaurantId={restaurantId} />
+      <Reviews restaurantId={restaurantId} />*/}
+
     </div>
   );
 };

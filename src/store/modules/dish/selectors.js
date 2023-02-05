@@ -7,6 +7,12 @@ export const selectDishEntities = (state) => state.dish.entities;
 
 export const selectDishes = (state) => Object.values(state.dish.entities);
 
+export const selectDishesFilteredByName = (state, { dishName }) =>
+  Object.values(state.dish.entities).filter(
+    ({ id, name }) =>
+      dishName === '' || name.toLowerCase().includes(dishName.toLowerCase())
+  ) || [];
+
 export const selectDishById = (state, { dishId }) =>
   entitySelectors.selectById(selectDishModule(state), dishId);
 

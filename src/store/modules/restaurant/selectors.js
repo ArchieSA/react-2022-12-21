@@ -55,6 +55,11 @@ export const selectRestaurantEntitiesFilteredByName = (
     name.toLowerCase().includes(restaurantName.toLowerCase())
   ) || [];
 
+export const selectRestaurantEntitiesFilteredByDishId = (state, { dishId }) =>
+  Object.values(selectRestaurantModule(state).entities).filter(({ menu }) =>
+    menu.includes(dishId)
+  ) || [];
+
 export const selectRestaurantLoadingStatus = (state) =>
   selectRestaurantModule(state).loadingStatus;
 

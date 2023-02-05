@@ -6,7 +6,7 @@ import {
 } from '../../store/modules/restaurant/selectors';
 import { useEffect } from 'react';
 import { selectIsDishLoading } from '../../store/modules/dish/selectors';
-import { fetchDishByRestaurantId } from '../../store/modules/dish/thunks/fetchDishByRestaurantId';
+import { fetchDishesByRestaurantId } from '../../store/modules/dish/thunk/fetchDishesByRestaurantId';
 import { Button } from '../Button/Button';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { getAlternativeSort } from './utils';
@@ -30,7 +30,7 @@ export const Menu = () => {
   const isLoading = useSelector(selectIsDishLoading);
 
   useEffect(() => {
-    dispatch(fetchDishByRestaurantId(restaurantId));
+    dispatch(fetchDishesByRestaurantId(restaurantId));
   }, [restaurantId]);
 
   if (isLoading) {

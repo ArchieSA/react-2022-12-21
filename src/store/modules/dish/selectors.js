@@ -5,6 +5,8 @@ export const selectDishModule = (state) => state.dish;
 
 export const selectDishEntities = (state) => state.dish.entities;
 
+export const selectDishes = (state) => Object.values(state.dish.entities);
+
 export const selectDishById = (state, { dishId }) =>
   entitySelectors.selectById(selectDishModule(state), dishId);
 

@@ -3,7 +3,7 @@ import { LOADING_STATUSES } from '../../../constants/loadingStatuses';
 import { selectRestaurantMenuById } from '../../restaurant/selectors';
 import { selectDishIds } from '../selectors';
 
-export const fetchDishByRestaurantId = createAsyncThunk(
+export const fetchDishesByRestaurantId = createAsyncThunk(
   `dish/fetchDishByRestaurantId`,
   async (restaurantId, { getState, rejectWithValue }) => {
     const state = getState();

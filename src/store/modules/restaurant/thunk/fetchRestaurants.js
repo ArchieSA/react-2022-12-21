@@ -12,7 +12,7 @@ export const fetchRestaurants = createAsyncThunk(
       return rejectWithValue(LOADING_STATUSES.earlyAdded);
     }
 
-    const response = await fetch('http://localhost:3001/api/restaurants/');
+    const response = await fetch('http://localhost:3001/api/restaurants');
 
     return await response.json();
   }

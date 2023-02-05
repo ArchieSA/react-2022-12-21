@@ -10,6 +10,9 @@ import { NotFound } from './pages/NotFound/NotFound';
 import { Restaurant } from './components/Restaurant/Restaurant';
 import { Menu } from './components/Menu/Menu';
 import { Reviews } from './components/Reviews/Reviews';
+import { DishesPage } from './pages/Dishes/Dishes';
+import { DishPage } from './pages/Dish/Dish';
+import { Dish } from './components/Dish/Dish';
 
 export const App = () => {
   return (
@@ -25,6 +28,10 @@ export const App = () => {
                 <Route path="menu" element={<Menu />} />
                 <Route path="reviews" element={<Reviews />} />
               </Route>
+            </Route>
+            <Route path="dishes" element={<DishesPage />}>
+              <Route index element={<span>choose dish</span>} />
+              <Route path=":dishId" element={<DishPage />} />
             </Route>
             <Route path="cart" element={<Cart />} />
             <Route

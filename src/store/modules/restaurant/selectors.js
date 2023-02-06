@@ -1,6 +1,5 @@
 import { LOADING_STATUSES } from '../../constants/loadingStatuses';
 import {
-  selectDishById,
   selectDishEntities,
   selectIsDishSuccessLoaded,
 } from '../dish/selectors';
